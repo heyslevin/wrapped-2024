@@ -10,6 +10,7 @@ export default defineCliConfig({
     projectId,
     dataset,
   },
+  studioHost: 'wrapped-2024',
   vite(viteConfig: UserConfig): UserConfig {
     return {
       ...viteConfig,

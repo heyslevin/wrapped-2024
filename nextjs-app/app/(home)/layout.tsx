@@ -65,7 +65,7 @@ export default async function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} bg-white text-black`}>
       <body>
-        <section className="min-h-screen pt-24">
+        <section className="">
           <Toaster />
           {isDraftMode && (
             <>
@@ -76,9 +76,8 @@ export default async function RootLayout({
           <LiveErrorBoundary>
             <SanityLive />
           </LiveErrorBoundary>
-          <Header />
+          {/* <Header /> */}
           <main className="">{children}</main>
-          <Footer />
         </section>
         <SpeedInsights />
       </body>

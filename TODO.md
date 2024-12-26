@@ -37,3 +37,9 @@ x Accordion
     Background Image with text box center
     Menu / Book a table (2 blocks side by side)
     Map section
+
+## Troubleshoot
+
+A “testBlock” block hasn't been created.
+
+- This has to do with the BlockRenderer in nextjsapp. Check the import and naming of the block that isn't working

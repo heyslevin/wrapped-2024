@@ -38,7 +38,7 @@ const Blocks: BlocksType = {
   form: Form,
   metrics: Metrics,
   accordion: Accordion,
-  test: TestBlock,
+  testBlock: TestBlock,
 };
 
 export default function BlockRenderer({ block, index }: BlockProps) {

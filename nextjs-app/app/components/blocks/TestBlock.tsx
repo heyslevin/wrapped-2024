@@ -1,3 +1,7 @@
-export default function TestBlock() {
-  return <div className="text-8xl">Welcome to my website motherfucker</div>;
+export default function TestBlock({ block }: any) {
+  return (
+    <div className="container">
+      <div className="text-5xl">Welcome to my website bitch</div>
+    </div>
+  );
 }
