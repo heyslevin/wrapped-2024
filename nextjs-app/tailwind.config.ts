@@ -4,10 +4,12 @@ import typography from "@tailwindcss/typography";
 export default {
   content: ["./app/**/*.{ts,tsx}", "./sanity/**/*.{ts,tsx}"],
   theme: {
+    screens: { lg: "1410px" },
     container: {
       center: true,
       padding: "2rem",
     },
+
     extend: {
       boxShadow: {
         layer: "0 35px 60px -15px rgba(0, 0, 0, 0.3)",
@@ -95,12 +97,13 @@ export default {
         },
       },
       fontFamily: {
-        sans: ["var(--font-inter)"],
+        primary: ["var(--font-graphik)", "Arial", "sans-serif"],
       },
     },
   },
   future: {
     hoverOnlyWhenSupported: true,
   },
+
   plugins: [typography],
 } satisfies Config;

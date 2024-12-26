@@ -46,7 +46,7 @@ export default async function Page(props: Props) {
   }
 
   return (
-    <div className="my-12 lg:my-24">
+    <div className="">
       <PageBuilderPage page={page as PageType} />
     </div>
   );

@@ -15,6 +15,7 @@ import * as demo from "@/sanity/lib/demo";
 import { sanityFetch, SanityLive } from "@/sanity/lib/live";
 import { GET_NAV_LINKS, settingsQuery } from "@/sanity/lib/queries";
 import { resolveOpenGraphImage } from "@/sanity/lib/utils";
+import localFont from "next/font/local";
 
 export async function generateMetadata(): Promise<Metadata> {
   const { data: settings } = await sanityFetch({
@@ -53,6 +54,16 @@ const inter = Inter({
   display: "swap",
 });
 
+const graphik = localFont({
+  src: [
+    { path: "../fonts/graphik-regular.woff2", weight: "400", style: "normal" },
+    { path: "../fonts/graphik-medium.woff2", weight: "500", style: "normal" },
+    { path: "../fonts/graphik-super.woff2", weight: "900", style: "normal" },
+  ],
+  display: "swap",
+  variable: "--font-graphik",
+});
+
 export default async function RootLayout({
   children,
 }: {
@@ -63,7 +74,7 @@ export default async function RootLayout({
   const navLinks = sanityFetch({ query: GET_NAV_LINKS });
 
   return (
-    <html lang="en" className={`${inter.variable} bg-white text-black`}>
+    <html lang="en" className={`${graphik.variable} bg-white text-black`}>
       <body>
         <section className="">
           <Toaster />
