@@ -2,7 +2,7 @@ import type { Config } from "tailwindcss";
 import typography from "@tailwindcss/typography";
 
 export default {
-  content: ["./app/**/*.{ts,tsx}", "./sanity/**/*.{ts,tsx}"],
+  content: ["./app/**/*.{ts,tsx,js}", "./sanity/**/*.{ts,tsx}"],
   theme: {
     screens: { lg: "1410px" },
     container: {
@@ -97,6 +97,7 @@ export default {
         },
       },
       fontFamily: {
+        sans: ["var(--font-graphik)", "Arial", "sans-serif"],
         primary: ["var(--font-graphik)", "Arial", "sans-serif"],
       },
     },
