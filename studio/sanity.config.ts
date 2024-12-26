@@ -13,7 +13,7 @@ import {
 import {assist} from '@sanity/assist'
 import {SINGLETONS} from '@/lib/constants'
 
-const projectId = process.env.SANITY_STUDIO_PROJECT_ID || 'your-projectID'
+const projectId = process.env.SANITY_STUDIO_PROJECT_ID || 'tits'
 const dataset = process.env.SANITY_STUDIO_DATASET || 'production'
 
 const SANITY_STUDIO_PREVIEW_URL = process.env.SANITY_STUDIO_PREVIEW_URL || 'http://localhost:3000'

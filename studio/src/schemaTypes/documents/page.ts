@@ -42,7 +42,6 @@ export default defineType({
       name: 'heading',
       title: 'Heading',
       type: 'string',
-      validation: (Rule) => Rule.required(),
       hidden: true,
     }),
     defineField({
@@ -55,7 +54,7 @@ export default defineType({
       name: 'isHome',
       title: 'Homepage Status',
       type: 'object',
-      hidden: true,
+      hidden: false,
       fields: [
         defineField({
           name: 'status',
