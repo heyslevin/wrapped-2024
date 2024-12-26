@@ -18,6 +18,7 @@ import navLink from './objects/navLink'
 import formType from './blocks/formType'
 import metricsType from './blocks/metricsType'
 import accordionType from './blocks/accordionType'
+import testBlock from './blocks/testBlockType'
 
 export const schemaTypes = [
   // Singletons
@@ -43,4 +44,5 @@ export const schemaTypes = [
   textAndImageType,
   metricsType,
   accordionType,
+  testBlock,
 ]

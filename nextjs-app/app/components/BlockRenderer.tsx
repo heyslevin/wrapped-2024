@@ -10,6 +10,7 @@ import TextAndImage from "./blocks/TextAndImage";
 import Form from "./blocks/Form";
 import Metrics from "./blocks/Metrics";
 import Accordion from "./blocks/Accordion";
+import TestBlock from "./blocks/TestBlock";
 
 type BlocksType = {
   [key: string]: React.FC<any>;
@@ -37,6 +38,7 @@ const Blocks: BlocksType = {
   form: Form,
   metrics: Metrics,
   accordion: Accordion,
+  test: TestBlock,
 };
 
 export default function BlockRenderer({ block, index }: BlockProps) {

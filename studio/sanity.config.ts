@@ -48,6 +48,7 @@ export default defineConfig({
 
   projectId,
   dataset,
+  studioHost: 'wrapped-2024',
 
   plugins: [
     presentationTool({
