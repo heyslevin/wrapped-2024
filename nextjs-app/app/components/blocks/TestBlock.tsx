@@ -2,16 +2,17 @@ import { urlForImage } from "@/sanity/lib/utils";
 import styles from "../../styles/heroStyles.module.css";
 import { Image } from "next-sanity/image";
 import { ArrowRight } from "lucide-react";
+import BlockContainer from "../BlockContainer";
 
 export default function TestBlock({ block }: any) {
   const image = block.logo;
   console.log({ test: block });
   return (
-    <main>
+    <main className="bg-[#EBEBEB]">
       {/* Hero block */}
 
       {/* Overflow hides background pattern */}
-      <section className="md:h-[745px] md:py-10 relative flex w-full items-center justify-center overflow-hidden bg-[#1868FF]">
+      <BlockContainer size="lg" className="bg-[#1868FF]">
         {/* Background */}
         <div className="absolute h-full w-full">
           <div className={`${styles.row} ${styles["row-1"]} `}></div>
@@ -26,12 +27,12 @@ export default function TestBlock({ block }: any) {
           <div className={`${styles.row} ${styles["row-10"]} `}></div>
         </div>
         {/* Content */}
-        <div className="md:p-0 container relative flex h-full w-full p-4">
+        <div className="md:p-0 md:mx-10 relative mx-1 flex h-full w-full p-4">
           <div className="grid w-full grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-6">
             {/* Left block */}
             <section className="motion-opacity-in-0 motion-blur-in-md motion-translate-y-in-25 flex h-full min-h-80 flex-col justify-between rounded-lg bg-black text-white">
               <div className="p-5">
-                <h1 className="motion-opacity-in-0 motion-blur-in-md motion-translate-y-in-25 motion-delay-500 md:text-[100px] md:leading-[85px] flex h-full px-0 text-[3.5rem] font-black leading-[3rem] tracking-tight">
+                <h1 className="motion-opacity-in-0 motion-blur-in-md motion-translate-y-in-25 motion-delay-500 md:text-[6vw] md:leading-[5vw] flex h-full px-0 text-[3.5rem] font-black leading-[3rem] tracking-tight">
                   WRAPPED 2024
                 </h1>
               </div>
@@ -75,7 +76,30 @@ export default function TestBlock({ block }: any) {
             </section>
           </div>
         </div>
-      </section>
+      </BlockContainer>
+
+      {/* Paragraph Section */}
+      <BlockContainer>
+        <div className="md:w-1/2 md:py-8 w-full">
+          <h2 className="text-2xl">
+            We’ve been on the brink of change for several years, and this past
+            year was an acceleration towards the world ahead. What do we want it
+            to look like? We want to be active participants by advocating for a
+            world where form and function integrate to create value, success
+            aligns with social impact, and work enhances well-being. 2023 marked
+            our 20th year working with the world’s most influential
+            organizations. They’re actively changing how we work, live, and
+            interact. Together, we strive to co-create the world we want to live
+            in. We’re honored to serve their collective missions and humbled by
+            their continued trust.
+          </h2>
+        </div>
+      </BlockContainer>
+
+      {/* Gallery */}
+      <BlockContainer size="lg">
+        <div className="">Gallery</div>
+      </BlockContainer>
     </main>
   );
 }
