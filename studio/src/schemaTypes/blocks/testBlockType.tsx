@@ -9,6 +9,19 @@ export default defineType({
       name: 'title',
       type: 'string',
     }),
+    defineField({
+      name: 'logo',
+      type: 'image',
+      fields: [
+        {
+          name: 'alt',
+          type: 'string',
+          title: 'Alternative Text',
+          description: 'Important for SEO and accessiblity.',
+          validation: (Rule) => Rule.required(),
+        },
+      ],
+    }),
   ],
   icon: () => <Blocks size={16} />,
 })

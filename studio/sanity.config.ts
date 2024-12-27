@@ -12,6 +12,7 @@ import {
 } from 'sanity/presentation'
 import {assist} from '@sanity/assist'
 import {SINGLETONS} from '@/lib/constants'
+import {media} from 'sanity-plugin-media'
 
 const projectId = process.env.SANITY_STUDIO_PROJECT_ID || 'tits'
 const dataset = process.env.SANITY_STUDIO_DATASET || 'production'
@@ -118,6 +119,7 @@ export default defineConfig({
     }),
     unsplashImageAsset(),
     visionTool(),
+    media(),
   ],
 
   schema: {

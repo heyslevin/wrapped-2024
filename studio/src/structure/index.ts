@@ -23,9 +23,15 @@ export const structure = (S: any) =>
       ...S.documentTypeListItems().filter(
         // Remove the "assist.instruction.context" and "settings" content  from the list of content types
         (listItem: any) =>
-          !['person', 'post', 'settings', 'style', 'header', 'assist.instruction.context'].includes(
-            listItem.getId(),
-          ),
+          ![
+            'media.tag',
+            'person',
+            'post',
+            'settings',
+            'style',
+            'header',
+            'assist.instruction.context',
+          ].includes(listItem.getId()),
       ),
       S.divider(),
       singletonListItem(S, 'header', 'Header Navigation Settings').icon(PanelTop),
