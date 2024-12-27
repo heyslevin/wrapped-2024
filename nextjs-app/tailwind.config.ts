@@ -112,5 +112,5 @@ export default {
     hoverOnlyWhenSupported: true,
   },
 
-  plugins: [typography],
+  plugins: [typography, require("tailwindcss-motion")],
 } satisfies Config;
