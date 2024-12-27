@@ -8,32 +8,34 @@ export default function TestBlock({ block }: any) {
   return (
     <main>
       {/* Hero block */}
-      <section className="relative flex h-60 items-center justify-center text-wrap bg-[#1868FF]">
+
+      {/* Overflow hides background pattern */}
+      <section className="md:h-[745px] md:py-10 relative flex w-full items-center justify-center overflow-hidden bg-[#1868FF]">
         {/* Background */}
         <div className="absolute h-full w-full">
-          <div className={`${styles["row-1"]} ${styles.row}`}></div>
-          <div className={`${styles["row-2"]} ${styles.row}`}></div>
-          <div className={`${styles["row-3"]} ${styles.row}`}></div>
-          <div className={`${styles["row-4"]} ${styles.row}`}></div>
-          <div className={`${styles["row-5"]} ${styles.row}`}></div>
-          <div className={`${styles["row-6"]} ${styles.row}`}></div>
-          <div className={`${styles["row-7"]} ${styles.row}`}></div>
-          <div className={`${styles["row-8"]} ${styles.row}`}></div>
-          <div className={`${styles["row-9"]} ${styles.row}`}></div>
-          <div className={`${styles["row-10"]} ${styles.row}`}></div>
+          <div className={`${styles.row} ${styles["row-1"]}`}></div>
+          <div className={`${styles.row} ${styles["row-2"]}`}></div>
+          <div className={`${styles.row} ${styles["row-3"]}`}></div>
+          <div className={`${styles.row} ${styles["row-4"]}`}></div>
+          <div className={`${styles.row} ${styles["row-5"]}`}></div>
+          <div className={`${styles.row} ${styles["row-6"]}`}></div>
+          <div className={`${styles.row} ${styles["row-7"]}`}></div>
+          <div className={`${styles.row} ${styles["row-8"]}`}></div>
+          <div className={`${styles.row} ${styles["row-9"]}`}></div>
+          <div className={`${styles.row} ${styles["row-10"]}`}></div>
         </div>
         {/* Content */}
-        <div className="container relative p-0">
-          <div className="grid grid-cols-[repeat(auto-fill,minmax(100px,1fr))] gap-6">
+        <div className="md:p-0 container relative flex h-full w-full p-4">
+          <div className="grid w-full grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-6">
             {/* Left block */}
-            <section className="h-[740] rounded-lg bg-black p-5 text-white">
-              <h1 className="flex h-full px-0 text-5xl text-[100px] font-black leading-[85px] tracking-tight">
+            <section className="h-full rounded-lg bg-black p-5 text-white">
+              <h1 className="md:text-[100px] md:leading-[85px] flex h-full min-h-80 px-0 text-6xl font-black leading-[4rem] tracking-tight">
                 WRAPPED 2024
               </h1>
             </section>
 
             {/* Right Block */}
-            <section className="flex flex-col justify-between rounded-lg border border-white bg-none p-5 text-white">
+            <section className="flex min-h-80 flex-col justify-between rounded-lg border border-white bg-none p-5 text-white">
               <div className="relative w-full">
                 <Image
                   className="w-full"
