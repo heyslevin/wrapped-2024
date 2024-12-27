@@ -8,7 +8,7 @@ export default function TestBlock({ block }: any) {
   return (
     <main>
       {/* Hero block */}
-      <section className="relative flex h-[896] items-center justify-center bg-[#1868FF]">
+      <section className="relative flex h-60 items-center justify-center text-wrap bg-[#1868FF]">
         {/* Background */}
         <div className="absolute h-full w-full">
           <div className={`${styles["row-1"]} ${styles.row}`}></div>
@@ -24,13 +24,16 @@ export default function TestBlock({ block }: any) {
         </div>
         {/* Content */}
         <div className="container relative p-0">
-          <div className="grid grid-cols-2 gap-6">
-            <div className="h-[740] rounded-lg bg-black p-5 text-white">
+          <div className="grid grid-cols-[repeat(auto-fill,minmax(100px,1fr))] gap-6">
+            {/* Left block */}
+            <section className="h-[740] rounded-lg bg-black p-5 text-white">
               <h1 className="flex h-full px-0 text-5xl text-[100px] font-black leading-[85px] tracking-tight">
                 WRAPPED 2024
               </h1>
-            </div>
-            <div className="flex flex-col justify-between rounded-lg border border-white bg-none p-5 text-white">
+            </section>
+
+            {/* Right Block */}
+            <section className="flex flex-col justify-between rounded-lg border border-white bg-none p-5 text-white">
               <div className="relative w-full">
                 <Image
                   className="w-full"
@@ -44,7 +47,7 @@ export default function TestBlock({ block }: any) {
                 12 years making things easy to understand, and impossible to
                 ignore.
               </div>
-            </div>
+            </section>
           </div>
         </div>
       </section>

@@ -2,15 +2,21 @@ import type { Config } from "tailwindcss";
 import typography from "@tailwindcss/typography";
 
 export default {
-  content: ["./app/**/*.{ts,tsx,js}", "./sanity/**/*.{ts,tsx}"],
+  content: [
+    "./sanity/**/*.{ts,tsx}",
+    "./pages/**/*.{ts,tsx,js,jsx}",
+    "./components/**/*.{ts,tsx,js,jsx}",
+    "./app/**/*.{ts,tsx,js,jsx}",
+    "./src/**/*.{ts,tsx,js,jsx}",
+  ],
   theme: {
-    screens: { lg: "1410px" },
     container: {
       center: true,
       padding: "2rem",
     },
 
     extend: {
+      screens: { lg: "1410px" },
       boxShadow: {
         layer: "0 35px 60px -15px rgba(0, 0, 0, 0.3)",
       },
