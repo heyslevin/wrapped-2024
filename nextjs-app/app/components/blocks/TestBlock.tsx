@@ -3,16 +3,24 @@ import styles from "../../styles/heroStyles.module.css";
 import { Image } from "next-sanity/image";
 import { ArrowRight } from "lucide-react";
 import BlockContainer from "../BlockContainer";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "../ui/carousel";
 
 export default function TestBlock({ block }: any) {
+  console.log({ test: block.gallery });
   const image = block.logo;
-  console.log({ test: block });
+  const gallery = block.gallery;
   return (
     <main className="bg-[#EBEBEB]">
       {/* Hero block */}
 
       {/* Overflow hides background pattern */}
-      <BlockContainer size="lg" className="bg-[#1868FF]">
+      <BlockContainer size="lg" className="bg-[#1868FF] md:py-10">
         {/* Background */}
         <div className="absolute h-full w-full">
           <div className={`${styles.row} ${styles["row-1"]} `}></div>
@@ -97,8 +105,27 @@ export default function TestBlock({ block }: any) {
       </BlockContainer>
 
       {/* Gallery */}
-      <BlockContainer size="lg">
-        <div className="">Gallery</div>
+      <BlockContainer className="my-10 p-4">
+        <Carousel className="w-full">
+          <CarouselContent className="">
+            {gallery.map((image: any) => {
+              return (
+                <CarouselItem key={image._key} className="">
+                  <div className="max-h-[800px] overflow-hidden rounded-lg">
+                    <Image
+                      src={urlForImage(image)?.url() as string}
+                      alt={image.alt}
+                      width={2000}
+                      height={1500}
+                    />
+                  </div>
+                </CarouselItem>
+              );
+            })}
+          </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
+        </Carousel>
       </BlockContainer>
     </main>
   );

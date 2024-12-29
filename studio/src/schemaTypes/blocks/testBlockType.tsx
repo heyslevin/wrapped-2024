@@ -22,6 +22,23 @@ export default defineType({
         },
       ],
     }),
+    defineField({
+      name: 'gallery',
+      type: 'array',
+      of: [
+        defineField({
+          name: 'image',
+          type: 'image',
+          fields: [
+            defineField({
+              name: 'alt',
+              type: 'string',
+              validation: (Rule) => Rule.required(),
+            }),
+          ],
+        }),
+      ],
+    }),
   ],
   icon: () => <Blocks size={16} />,
 })
