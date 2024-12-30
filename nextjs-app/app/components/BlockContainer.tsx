@@ -1,3 +1,5 @@
+import { cn } from "@/lib/utils";
+
 interface BlockContainerProps {
   children: React.ReactNode;
   className?: string;
@@ -23,7 +25,11 @@ export default function BlockContainer({
   return (
     // className="md:h-[745px] md:py-10 relative flex w-full items-center justify-center overflow-hidden bg-[#1868FF]"
     <section
-      className={`relative flex w-full items-center justify-center ${styles?.height || ""} ${className || ""}`}
+      className={cn(
+        "relative flex w-full items-center justify-center",
+        styles?.height || "",
+        className || "",
+      )}
       {...delegated}
     >
       {/* Block Container  */}

@@ -12,6 +12,7 @@ import {
 } from "../ui/carousel";
 import { PortableText } from "next-sanity";
 import { PortableParagraph } from "../PortableParagraph";
+import SectionContainer from "../SectionContainer";
 
 export default function TestBlock({ block }: any) {
   console.log({ test: block.blockContent[0] });
@@ -133,26 +134,25 @@ export default function TestBlock({ block }: any) {
         </Carousel>
       </BlockContainer>
 
-      {/* Section Block */}
-      <BlockContainer className="flex-col gap-10 py-12 text-center">
-        <h2 className="intersect:motion-preset-focus-lg intersect:motion-preset-slide-up-lg text-9xl font-black uppercase leading-[6rem]">
-          The Stats
-        </h2>
-        <div className="w-1/2">
-          <p className="intersect:motion-preset-focus-lg intersect:motion-preset-slide-up-lg intersect:motion-delay-300 text-balance text-lg">
-            They’re actively changing how we work, live, and interact. Together,
-            we strive to co-create the world we want to live in.
-          </p>
-        </div>
-      </BlockContainer>
-
-      {/* Paragraph Block */}
-      <BlockContainer className="py-64">
-        <PortableText
-          components={PortableParagraph as any}
-          value={block.blockContent}
+      {/* Black Background Block */}
+      <div className="intersect:motion-bg-out-black flex w-full flex-col items-center justify-center motion-duration-[2s]">
+        <SectionContainer
+          className="py-28 text-white"
+          title="The Stats"
+          paragraph="They’re actively changing how we work, live, and interact. Together, we strive to co-create the world we want to live in."
         />
-      </BlockContainer>
+
+        {/* Paragraph Block */}
+        <BlockContainer className="w-3/4 py-0 pb-44 text-white">
+          {/* Animated wrapper */}
+          <div className="intersect:motion-preset-slide-up-md motion-delay-1000">
+            <PortableText
+              components={PortableParagraph as any}
+              value={block.blockContent}
+            />
+          </div>
+        </BlockContainer>
+      </div>
     </main>
   );
 }
