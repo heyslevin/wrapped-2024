@@ -1,4 +1,4 @@
-import { urlForImage } from "@/sanity/lib/utils";
+import { animateIn, urlForImage } from "@/sanity/lib/utils";
 import styles from "../../styles/heroStyles.module.css";
 import { Image } from "next-sanity/image";
 import { ArrowRight } from "lucide-react";
@@ -13,6 +13,8 @@ import {
 import { PortableText } from "next-sanity";
 import { PortableParagraph } from "../PortableParagraph";
 import SectionContainer from "../SectionContainer";
+import { cn } from "@/lib/utils";
+import { FadeCarousel } from "../FadeCarousel";
 
 export default function TestBlock({ block }: any) {
   console.log({ test: block.blockContent[0] });
@@ -135,24 +137,34 @@ export default function TestBlock({ block }: any) {
       </BlockContainer>
 
       {/* Black Background Block */}
-      <div className="intersect:motion-bg-out-black flex w-full flex-col items-center justify-center motion-duration-[2s]">
+      <div className="intersect-once intersect:motion-opacity-in-0 flex w-full flex-col items-center justify-center bg-black">
         <SectionContainer
-          className="py-28 text-white"
+          className="py-16 text-white md:py-28"
           title="The Stats"
           paragraph="They’re actively changing how we work, live, and interact. Together, we strive to co-create the world we want to live in."
         />
 
         {/* Paragraph Block */}
-        <BlockContainer className="w-3/4 py-0 pb-44 text-white">
-          {/* Animated wrapper */}
-          <div className="intersect:motion-preset-slide-up-md motion-delay-1000">
-            <PortableText
-              components={PortableParagraph as any}
-              value={block.blockContent}
-            />
-          </div>
+        <BlockContainer className="w-10/12 py-0 pb-28 text-white md:w-3/4 md:pb-44">
+          <PortableText
+            components={PortableParagraph as any}
+            value={block.blockContent}
+          />
         </BlockContainer>
       </div>
+      <BlockContainer className="items-stretch px-10 py-10">
+        <section className="flex w-1/2 flex-col text-5xl tracking-tight">
+          <h2 className="mb-auto text-[200px] font-medium">8</h2>
+          <h3 className="">Portfolio Projects</h3>
+          <h3 className="text-stone-400">A lot more to come!</h3>
+        </section>
+        <section className="grid w-1/2 grid-cols-2 gap-4">
+          <FadeCarousel items={gallery} />
+          <div className="aspect-square rounded-lg bg-emerald-300"></div>
+          <div className="aspect-square rounded-lg bg-emerald-300"></div>
+          <div className="aspect-square rounded-lg bg-emerald-300"></div>
+        </section>
+      </BlockContainer>
     </main>
   );
 }

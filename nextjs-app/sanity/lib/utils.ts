@@ -7,6 +7,9 @@ const imageBuilder = createImageUrlBuilder({
   dataset: dataset || "",
 });
 
+export const animateIn =
+  "intersect-full intersect:motion-blur-in-md intersect:motion-translate-y-in-25 intersect:motion-opacity-in-0 fill-both";
+
 export const urlForImage = (source: any) => {
   // Ensure that source image contains a valid reference
   if (!source?.asset?._ref) {

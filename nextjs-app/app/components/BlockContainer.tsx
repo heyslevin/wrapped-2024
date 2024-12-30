@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 
 interface BlockContainerProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   className?: string;
   size?: keyof typeof STYLES;
 }
