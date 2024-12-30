@@ -16,6 +16,7 @@ import { sanityFetch, SanityLive } from "@/sanity/lib/live";
 import { GET_NAV_LINKS, settingsQuery } from "@/sanity/lib/queries";
 import { resolveOpenGraphImage } from "@/sanity/lib/utils";
 import localFont from "next/font/local";
+import ObserverProvider from "../components/ObserverProvider";
 
 export async function generateMetadata(): Promise<Metadata> {
   const { data: settings } = await sanityFetch({
@@ -88,7 +89,7 @@ export default async function RootLayout({
             <SanityLive />
           </LiveErrorBoundary>
           {/* <Header /> */}
-          <main className="">{children}</main>
+          <ObserverProvider>{children}</ObserverProvider>
         </section>
         <SpeedInsights />
       </body>

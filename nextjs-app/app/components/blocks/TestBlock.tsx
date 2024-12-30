@@ -18,11 +18,14 @@ export default function TestBlock({ block }: any) {
   const image = block.logo;
   const gallery = block.gallery;
   return (
-    <main className="bg-[#EBEBEB]">
+    <main className="flex flex-col items-center bg-[#EBEBEB]">
       {/* Hero block */}
 
       {/* Overflow hides background pattern */}
-      <BlockContainer size="lg" className="bg-[#1868FF] md:py-10">
+      <BlockContainer
+        size="lg"
+        className="overflow-hidden bg-[#1868FF] md:py-10"
+      >
         {/* Background */}
         <div className="absolute h-full w-full">
           <div className={`${styles.row} ${styles["row-1"]} `}></div>
@@ -129,6 +132,21 @@ export default function TestBlock({ block }: any) {
           <CarouselNext />
         </Carousel>
       </BlockContainer>
+
+      {/* Section Block */}
+      <BlockContainer className="flex-col gap-10 py-12 text-center">
+        <h2 className="intersect:motion-preset-focus-lg intersect:motion-preset-slide-up-lg text-9xl font-black uppercase leading-[6rem]">
+          The Stats
+        </h2>
+        <div className="w-1/2">
+          <p className="intersect:motion-preset-focus-lg intersect:motion-preset-slide-up-lg intersect:motion-delay-300 text-balance text-lg">
+            They’re actively changing how we work, live, and interact. Together,
+            we strive to co-create the world we want to live in.
+          </p>
+        </div>
+      </BlockContainer>
+
+      {/* Paragraph Block */}
       <BlockContainer className="py-64">
         <PortableText
           components={PortableParagraph as any}

@@ -43,6 +43,7 @@
     "eslint-config-next": "^15.0.1",
     "prettier": "^3.4.2",
     "prettier-plugin-tailwindcss": "^0.6.9",
+    "tailwindcss-intersect": "^2.0.1",
     "tailwindcss-motion": "^1.0.0"
   }
 }
