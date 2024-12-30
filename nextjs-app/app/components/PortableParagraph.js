@@ -1,3 +1,6 @@
+import { urlForImage } from "@/sanity/lib/utils";
+import { Image } from "next-sanity/image";
+
 export const PortableParagraph = {
   block: {
     h1: ({ children }) => (
@@ -54,6 +57,24 @@ export const PortableParagraph = {
         >
           {children}
         </a>
+      );
+    },
+  },
+  types: {
+    image: ({ value }) => {
+      if (!value?.asset?._ref) {
+        return null;
+      }
+      return (
+        <div className="inline-block w-14">
+          <Image
+            src={urlForImage(value)?.url() || ""}
+            alt={value.alt || ""}
+            className="rounded-lg"
+            width={800}
+            height={600}
+          />
+        </div>
       );
     },
   },

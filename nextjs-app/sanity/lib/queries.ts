@@ -74,6 +74,13 @@ const PAGE_BUILDER_CONTENT_QUERY = /* groq */ `
     },
     _type == "paragraph" => {
       ...,
+      children[]{
+        ...,
+        _type == 'image' => {
+          ...,
+          asset->
+        }
+      }
     },
     _type == "textAndImage" => {
       ...,

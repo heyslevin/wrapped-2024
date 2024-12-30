@@ -39,6 +39,21 @@ export default defineType({
         }),
       ],
     }),
+    defineField({
+      name: 'blockContent',
+      type: 'array',
+      of: [
+        {
+          type: 'block',
+          of: [
+            {
+              name: 'image',
+              type: 'image',
+            },
+          ],
+        },
+      ],
+    }),
   ],
   icon: () => <Blocks size={16} />,
 })

@@ -10,9 +10,11 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "../ui/carousel";
+import { PortableText } from "next-sanity";
+import { PortableParagraph } from "../PortableParagraph";
 
 export default function TestBlock({ block }: any) {
-  console.log({ test: block.gallery });
+  console.log({ test: block.blockContent[0] });
   const image = block.logo;
   const gallery = block.gallery;
   return (
@@ -126,6 +128,12 @@ export default function TestBlock({ block }: any) {
           <CarouselPrevious />
           <CarouselNext />
         </Carousel>
+      </BlockContainer>
+      <BlockContainer className="py-64">
+        <PortableText
+          components={PortableParagraph as any}
+          value={block.blockContent}
+        />
       </BlockContainer>
     </main>
   );
