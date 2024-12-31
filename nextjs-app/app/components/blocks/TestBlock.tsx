@@ -16,11 +16,13 @@ import SectionContainer from "../SectionContainer";
 import { cn } from "@/lib/utils";
 import { FadeCarousel } from "../FadeCarousel";
 import Autoplay from "embla-carousel-autoplay";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
 
 export default function TestBlock({ block }: any) {
-  console.log({ test: block.blockContent[0] });
+  console.log({ test: block });
   const image = block.logo;
   const gallery = block.gallery;
+  const tabs = block.tabs;
   return (
     <main className="flex flex-col items-center bg-[#EBEBEB]">
       {/* Hero block */}
@@ -139,8 +141,6 @@ export default function TestBlock({ block }: any) {
               );
             })}
           </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
         </Carousel>
       </BlockContainer>
 
@@ -240,6 +240,40 @@ export default function TestBlock({ block }: any) {
           <FadeCarousel items={gallery} options={{ delay: 5600 }} />
         </section>
       </BlockContainer>
+
+      {/* Industries Served */}
+      <Tabs defaultValue={tabs[0].industry} className="">
+        <TabsList>
+          {tabs.map((tab: any) => {
+            return (
+              <TabsTrigger key={tab._key} value={tab.industry}>
+                {tab.industry}
+              </TabsTrigger>
+            );
+          })}
+        </TabsList>
+        {tabs.map((tab: any) => {
+          //Check the lqip reference doesn't break when leaving test
+          const imageAsset = tab.image;
+          const lqip = tab.image.fullAsset.metadata.lqip;
+          return (
+            <TabsContent key={tab._key} value={tab.industry}>
+              <Image
+                src={urlForImage(imageAsset)?.url() as string}
+                height={500}
+                width={700}
+                alt={imageAsset.alt || ""}
+                placeholder="blur"
+                blurDataURL={lqip || ""}
+              />
+            </TabsContent>
+          );
+        })}
+        <TabsContent value="account">
+          Make changes to your account here.
+        </TabsContent>
+        <TabsContent value="password">Change your password here.</TabsContent>
+      </Tabs>
     </main>
   );
 }

@@ -37,7 +37,7 @@ const heroLinkFields = /* groq */ `
     }
 `;
 
-//To-do: have one for home and not home
+//To-do: Will have to fix queries when going from test block, to separating all the blocks into own types. Type == "tabs". Switch "tabs"  to _type == tabs.
 const PAGE_BUILDER_CONTENT_QUERY = /* groq */ `
     "pageBuilder": pageBuilder[]{
       ...,
@@ -70,9 +70,25 @@ const PAGE_BUILDER_CONTENT_QUERY = /* groq */ `
             "blurDataUrl": asset->.metadata.lqip,
           }
         }
+      },
+      tabs[] {
+        ...,
+        image {
+          ...,
+          "fullAsset": asset->
+        }
+      },
+      _type == "paragraph" => {
+      ...,
+      children[]{
+        ...,
+        _type == 'image' => {
+          ...,
+          asset->
+        }
       }
     },
-    _type == "paragraph" => {
+    _type == "tabs" => {
       ...,
       children[]{
         ...,
@@ -99,6 +115,11 @@ const PAGE_BUILDER_CONTENT_QUERY = /* groq */ `
     _type == "accordion" => {
       ...,
     }
+
+    }
+    
+    
+    
 `;
 
 export const GET_NAV_LINKS = defineQuery(`

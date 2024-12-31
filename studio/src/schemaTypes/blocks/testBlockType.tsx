@@ -54,6 +54,36 @@ export default defineType({
         },
       ],
     }),
+    defineField({
+      name: 'tabs',
+      type: 'array',
+      of: [
+        defineField({
+          name: 'tab',
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'industry',
+              type: 'string',
+            }),
+            defineField({
+              name: 'percentage',
+              type: 'string',
+            }),
+            defineField({
+              name: 'image',
+              type: 'image',
+              fields: [
+                {
+                  name: 'alt',
+                  type: 'string',
+                },
+              ],
+            }),
+          ],
+        }),
+      ],
+    }),
   ],
   icon: () => <Blocks size={16} />,
 })
