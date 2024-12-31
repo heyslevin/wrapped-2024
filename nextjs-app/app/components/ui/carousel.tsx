@@ -8,6 +8,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/app/components/ui/button";
+import Autoplay from "embla-carousel-autoplay";
 
 type CarouselApi = UseEmblaCarouselType[1];
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>;
@@ -19,6 +20,7 @@ type CarouselProps = {
   plugins?: CarouselPlugin;
   orientation?: "horizontal" | "vertical";
   setApi?: (api: CarouselApi) => void;
+  delay?: number;
 };
 
 type CarouselContextProps = {
@@ -51,7 +53,8 @@ const Carousel = React.forwardRef<
       orientation = "horizontal",
       opts,
       setApi,
-      plugins,
+      delay = 4000,
+      plugins = [Autoplay({ delay: delay })],
       className,
       children,
       ...props

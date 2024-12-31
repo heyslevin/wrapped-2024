@@ -31,6 +31,7 @@ export default function TestBlock({ block }: any) {
         className="overflow-hidden bg-[#1868FF] md:py-10"
       >
         {/* Background */}
+
         <div className="absolute h-full w-full">
           <div className={`${styles.row} ${styles["row-1"]} `}></div>
           <div className={`${styles.row} ${styles["row-2"]} `}></div>
@@ -43,10 +44,13 @@ export default function TestBlock({ block }: any) {
           <div className={`${styles.row} ${styles["row-9"]} `}></div>
           <div className={`${styles.row} ${styles["row-10"]} `}></div>
         </div>
+
         {/* Content */}
+
         <div className="relative mx-1 flex h-full w-full p-4 md:mx-10 md:p-0">
           <div className="grid w-full grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-6">
             {/* Left block */}
+
             <section className="flex h-full min-h-80 flex-col justify-between rounded-lg bg-black text-white motion-translate-y-in-25 motion-blur-in-md motion-opacity-in-0">
               <div className="p-5">
                 <h1 className="flex h-full px-0 text-[3.5rem] font-black leading-[3rem] tracking-tight motion-translate-y-in-25 motion-blur-in-md motion-opacity-in-0 motion-delay-500 md:text-[6vw] md:leading-[5vw]">
@@ -76,6 +80,7 @@ export default function TestBlock({ block }: any) {
             </section>
 
             {/* Right Block */}
+
             <section className="flex min-h-80 flex-col justify-between rounded-lg border border-white bg-none p-5 text-white motion-translate-y-in-25 motion-blur-in-md motion-opacity-in-0">
               <div className="relative w-full motion-translate-y-in-25 motion-blur-in-md motion-opacity-in-0 motion-delay-500">
                 <Image
@@ -96,6 +101,7 @@ export default function TestBlock({ block }: any) {
       </BlockContainer>
 
       {/* Paragraph Section */}
+
       <BlockContainer className="px-5 py-24 md:px-0">
         <div className="w-full md:w-1/2 md:py-8">
           <h2 className="text-xl md:text-2xl">
@@ -114,6 +120,7 @@ export default function TestBlock({ block }: any) {
       </BlockContainer>
 
       {/* Gallery */}
+
       <BlockContainer className="my-10 p-4">
         <Carousel className="w-full">
           <CarouselContent className="">
@@ -138,6 +145,7 @@ export default function TestBlock({ block }: any) {
       </BlockContainer>
 
       {/* Black Background Block */}
+
       <div className="intersect-once intersect:motion-opacity-in-0 flex w-full flex-col items-center justify-center bg-black">
         <SectionContainer
           className="py-16 text-white md:py-28"
@@ -146,6 +154,7 @@ export default function TestBlock({ block }: any) {
         />
 
         {/* Paragraph Block */}
+
         <BlockContainer className="w-10/12 py-0 pb-28 text-white md:w-3/4 md:pb-44">
           <PortableText
             components={PortableParagraph as any}
@@ -153,13 +162,18 @@ export default function TestBlock({ block }: any) {
           />
         </BlockContainer>
       </div>
+
+      {/* Portfolio Block */}
+
       <BlockContainer className="flex-col items-start justify-start py-4 md:flex-row md:items-stretch md:px-10 md:py-10">
-        <section className="mb-6 flex w-full flex-col items-center px-5 tracking-tight md:w-1/2 md:items-start md:text-5xl">
+        <section className="mb-6 flex w-full flex-col items-center px-5 tracking-tight md:mb-0 md:w-1/2 md:items-start md:text-5xl">
           <h2 className="text-9xl font-medium md:mb-auto md:text-[200px]">8</h2>
           <h3 className="">Portfolio Projects</h3>
           <h3 className="text-stone-400">A lot more to come!</h3>
         </section>
+
         {/* Mobile Gallery */}
+
         <section className="flex md:hidden">
           <Carousel className="w-full overflow-visible" opts={{ loop: true }}>
             <CarouselContent className="overflow-visible">
@@ -167,6 +181,12 @@ export default function TestBlock({ block }: any) {
                 return (
                   <CarouselItem key={image._key} className="basis-1/2">
                     <div className="aspect-square overflow-hidden rounded-lg">
+                      <figcaption className="absolute bottom-0 mb-2 ml-2 flex flex-row rounded-full bg-white/30 p-2 px-3 text-black backdrop-blur-md">
+                        <p className="text-xs">{image.alt}&nbsp;</p>
+                        <p className="whitespace-nowrap text-xs text-stone-500">
+                          · Education
+                        </p>
+                      </figcaption>
                       <Image
                         src={urlForImage(image)?.url() as string}
                         alt={image.alt}
@@ -178,17 +198,25 @@ export default function TestBlock({ block }: any) {
                 );
               })}
             </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
           </Carousel>
         </section>
-        <section className="flex pt-4 md:hidden">
-          <Carousel className="w-full overflow-visible" opts={{ loop: true }}>
+        <section className="flex md:hidden">
+          <Carousel
+            className="w-full overflow-visible pt-4"
+            opts={{ loop: true }}
+            delay={6500}
+          >
             <CarouselContent className="overflow-visible">
               {gallery.map((image: any) => {
                 return (
                   <CarouselItem key={image._key} className="basis-1/2">
                     <div className="aspect-square overflow-hidden rounded-lg">
+                      <figcaption className="absolute bottom-0 mb-2 ml-2 flex flex-row rounded-full bg-white/30 p-2 px-3 text-black backdrop-blur-md">
+                        <p className="text-xs">{image.alt}&nbsp;</p>
+                        <p className="whitespace-nowrap text-xs text-stone-500">
+                          · Education
+                        </p>
+                      </figcaption>
                       <Image
                         src={urlForImage(image)?.url() as string}
                         alt={image.alt}
@@ -200,11 +228,11 @@ export default function TestBlock({ block }: any) {
                 );
               })}
             </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
           </Carousel>
         </section>
+
         {/* Desktop Gallery */}
+
         <section className="hidden grid-cols-2 gap-4 md:grid md:w-1/2">
           <FadeCarousel items={gallery} options={{ delay: 4200 }} />
           <FadeCarousel items={gallery} options={{ delay: 9500 }} />
