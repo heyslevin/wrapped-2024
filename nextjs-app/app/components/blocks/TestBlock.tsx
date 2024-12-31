@@ -242,38 +242,44 @@ export default function TestBlock({ block }: any) {
       </BlockContainer>
 
       {/* Industries Served */}
-      <Tabs defaultValue={tabs[0].industry} className="">
-        <TabsList>
-          {tabs.map((tab: any) => {
-            return (
-              <TabsTrigger key={tab._key} value={tab.industry}>
-                {tab.industry}
-              </TabsTrigger>
-            );
-          })}
-        </TabsList>
-        {tabs.map((tab: any) => {
-          //Check the lqip reference doesn't break when leaving test
-          const imageAsset = tab.image;
-          const lqip = tab.image.fullAsset.metadata.lqip;
-          return (
-            <TabsContent key={tab._key} value={tab.industry}>
-              <Image
-                src={urlForImage(imageAsset)?.url() as string}
-                height={500}
-                width={700}
-                alt={imageAsset.alt || ""}
-                placeholder="blur"
-                blurDataURL={lqip || ""}
-              />
-            </TabsContent>
-          );
-        })}
-        <TabsContent value="account">
-          Make changes to your account here.
-        </TabsContent>
-        <TabsContent value="password">Change your password here.</TabsContent>
-      </Tabs>
+
+      <BlockContainer className="py-10">
+        <Tabs
+          defaultValue={tabs[0].industry}
+          className="flex w-full flex-row items-stretch"
+        >
+          <section className="w-1/2">
+            <TabsList className="flex flex-col">
+              {tabs.map((tab: any) => {
+                return (
+                  <TabsTrigger key={tab._key} value={tab.industry} className="">
+                    {tab.industry}
+                  </TabsTrigger>
+                );
+              })}
+            </TabsList>
+          </section>
+          <section className="w-1/2">
+            {tabs.map((tab: any) => {
+              //Check the lqip reference doesn't break when leaving test
+              const imageAsset = tab.image;
+              const lqip = tab.image.fullAsset.metadata.lqip;
+              return (
+                <TabsContent key={tab._key} value={tab.industry}>
+                  <Image
+                    src={urlForImage(imageAsset)?.url() as string}
+                    height={500}
+                    width={700}
+                    alt={imageAsset.alt || ""}
+                    placeholder="blur"
+                    blurDataURL={lqip || ""}
+                  />
+                </TabsContent>
+              );
+            })}
+          </section>
+        </Tabs>
+      </BlockContainer>
     </main>
   );
 }
