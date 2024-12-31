@@ -15,6 +15,7 @@ import { PortableParagraph } from "../PortableParagraph";
 import SectionContainer from "../SectionContainer";
 import { cn } from "@/lib/utils";
 import { FadeCarousel } from "../FadeCarousel";
+import Autoplay from "embla-carousel-autoplay";
 
 export default function TestBlock({ block }: any) {
   console.log({ test: block.blockContent[0] });
@@ -152,17 +153,63 @@ export default function TestBlock({ block }: any) {
           />
         </BlockContainer>
       </div>
-      <BlockContainer className="items-stretch px-10 py-10">
-        <section className="flex w-1/2 flex-col text-5xl tracking-tight">
-          <h2 className="mb-auto text-[200px] font-medium">8</h2>
+      <BlockContainer className="flex-col items-start justify-start py-4 md:flex-row md:items-stretch md:px-10 md:py-10">
+        <section className="mb-6 flex w-full flex-col items-center px-5 tracking-tight md:w-1/2 md:items-start md:text-5xl">
+          <h2 className="text-9xl font-medium md:mb-auto md:text-[200px]">8</h2>
           <h3 className="">Portfolio Projects</h3>
           <h3 className="text-stone-400">A lot more to come!</h3>
         </section>
-        <section className="grid w-1/2 grid-cols-2 gap-4">
-          <FadeCarousel items={gallery} />
-          <div className="aspect-square rounded-lg bg-emerald-300"></div>
-          <div className="aspect-square rounded-lg bg-emerald-300"></div>
-          <div className="aspect-square rounded-lg bg-emerald-300"></div>
+        {/* Mobile Gallery */}
+        <section className="flex md:hidden">
+          <Carousel className="w-full overflow-visible" opts={{ loop: true }}>
+            <CarouselContent className="overflow-visible">
+              {gallery.map((image: any) => {
+                return (
+                  <CarouselItem key={image._key} className="basis-1/2">
+                    <div className="aspect-square overflow-hidden rounded-lg">
+                      <Image
+                        src={urlForImage(image)?.url() as string}
+                        alt={image.alt}
+                        width={2000}
+                        height={2000}
+                      />
+                    </div>
+                  </CarouselItem>
+                );
+              })}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
+        </section>
+        <section className="flex pt-4 md:hidden">
+          <Carousel className="w-full overflow-visible" opts={{ loop: true }}>
+            <CarouselContent className="overflow-visible">
+              {gallery.map((image: any) => {
+                return (
+                  <CarouselItem key={image._key} className="basis-1/2">
+                    <div className="aspect-square overflow-hidden rounded-lg">
+                      <Image
+                        src={urlForImage(image)?.url() as string}
+                        alt={image.alt}
+                        width={2000}
+                        height={2000}
+                      />
+                    </div>
+                  </CarouselItem>
+                );
+              })}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
+        </section>
+        {/* Desktop Gallery */}
+        <section className="hidden grid-cols-2 gap-4 md:grid md:w-1/2">
+          <FadeCarousel items={gallery} options={{ delay: 4200 }} />
+          <FadeCarousel items={gallery} options={{ delay: 9500 }} />
+          <FadeCarousel items={gallery} options={{ delay: 6200 }} />
+          <FadeCarousel items={gallery} options={{ delay: 5600 }} />
         </section>
       </BlockContainer>
     </main>

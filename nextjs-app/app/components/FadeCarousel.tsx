@@ -28,7 +28,10 @@ export function FadeCarousel({ items, options }: FadeCarouselProps) {
         align: "start",
         loop: true,
       }}
-      plugins={[Fade(), Autoplay()]}
+      plugins={[
+        Fade(),
+        Autoplay({ stopOnMouseEnter: true, delay: options.delay }),
+      ]}
       className=""
     >
       <CarouselContent>
@@ -37,7 +40,7 @@ export function FadeCarousel({ items, options }: FadeCarouselProps) {
             <CarouselItem key={image._key} className="">
               <div className="overflow-hidden rounded-lg">
                 <div className="absolute bottom-4 left-6 rounded-full bg-white/30 text-black backdrop-blur-md">
-                  <p className="p-2 px-4 text-sm">{image.alt}</p>
+                  <p className="p-2 px-4 text-xs md:text-sm">{image.alt}</p>
                 </div>
                 <Image
                   className="object-cover"
