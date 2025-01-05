@@ -17,20 +17,21 @@ import { cn } from "@/lib/utils";
 import { FadeCarousel } from "../FadeCarousel";
 import Autoplay from "embla-carousel-autoplay";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
+import HoverTabs from "../HoverTabs";
 
 export default function TestBlock({ block }: any) {
-  console.log({ test: block });
+  console.log({ test: block.tabs[0] });
   const image = block.logo;
   const gallery = block.gallery;
   const tabs = block.tabs;
   return (
-    <main className="flex flex-col items-center bg-[#EBEBEB]">
+    <main className="relative flex flex-col items-center bg-[#EBEBEB]">
       {/* Hero block */}
 
       {/* Overflow hides background pattern */}
       <BlockContainer
         size="lg"
-        className="overflow-hidden bg-[#1868FF] md:py-10"
+        className="relative overflow-hidden bg-[#1868FF] md:py-10"
       >
         {/* Background */}
 
@@ -146,7 +147,7 @@ export default function TestBlock({ block }: any) {
 
       {/* Black Background Block */}
 
-      <div className="intersect-once intersect:motion-opacity-in-0 flex w-full flex-col items-center justify-center bg-black">
+      <div className="intersect-once flex w-full flex-col items-center justify-center bg-black intersect:motion-opacity-in-0">
         <SectionContainer
           className="py-16 text-white md:py-28"
           title="The Stats"
@@ -165,120 +166,95 @@ export default function TestBlock({ block }: any) {
 
       {/* Portfolio Block */}
 
-      <BlockContainer className="flex-col items-start justify-start py-4 md:flex-row md:items-stretch md:px-10 md:py-10">
-        <section className="mb-6 flex w-full flex-col items-center px-5 tracking-tight md:mb-0 md:w-1/2 md:items-start md:text-5xl">
-          <h2 className="text-9xl font-medium md:mb-auto md:text-[200px]">8</h2>
-          <h3 className="">Portfolio Projects</h3>
-          <h3 className="text-stone-400">A lot more to come!</h3>
-        </section>
+      <BlockContainer className="md:px-10">
+        <div className="flex w-full flex-col items-start justify-start gap-5 border-t border-stone-400 py-4 md:mb-36 md:mt-20 md:flex-row md:items-stretch md:py-10">
+          <section className="mb-6 flex w-full flex-col items-center px-5 tracking-tight md:mb-0 md:w-1/2 md:items-start md:px-0 md:text-5xl">
+            <h2 className="text-9xl font-medium md:mb-auto md:text-[200px]">
+              8
+            </h2>
+            <h3 className="">Portfolio Projects</h3>
+            <h3 className="text-stone-400">A lot more to come!</h3>
+          </section>
 
-        {/* Mobile Gallery */}
+          {/* Mobile Gallery */}
 
-        <section className="flex md:hidden">
-          <Carousel className="w-full overflow-visible" opts={{ loop: true }}>
-            <CarouselContent className="overflow-visible">
-              {gallery.map((image: any) => {
-                return (
-                  <CarouselItem key={image._key} className="basis-1/2">
-                    <div className="aspect-square overflow-hidden rounded-lg">
-                      <figcaption className="absolute bottom-0 mb-2 ml-2 flex flex-row rounded-full bg-white/30 p-2 px-3 text-black backdrop-blur-md">
-                        <p className="text-xs">{image.alt}&nbsp;</p>
-                        <p className="whitespace-nowrap text-xs text-stone-500">
-                          · Education
-                        </p>
-                      </figcaption>
-                      <Image
-                        src={urlForImage(image)?.url() as string}
-                        alt={image.alt}
-                        width={2000}
-                        height={2000}
-                      />
-                    </div>
-                  </CarouselItem>
-                );
-              })}
-            </CarouselContent>
-          </Carousel>
-        </section>
-        <section className="flex md:hidden">
-          <Carousel
-            className="w-full overflow-visible pt-4"
-            opts={{ loop: true }}
-            delay={6500}
-          >
-            <CarouselContent className="overflow-visible">
-              {gallery.map((image: any) => {
-                return (
-                  <CarouselItem key={image._key} className="basis-1/2">
-                    <div className="aspect-square overflow-hidden rounded-lg">
-                      <figcaption className="absolute bottom-0 mb-2 ml-2 flex flex-row rounded-full bg-white/30 p-2 px-3 text-black backdrop-blur-md">
-                        <p className="text-xs">{image.alt}&nbsp;</p>
-                        <p className="whitespace-nowrap text-xs text-stone-500">
-                          · Education
-                        </p>
-                      </figcaption>
-                      <Image
-                        src={urlForImage(image)?.url() as string}
-                        alt={image.alt}
-                        width={2000}
-                        height={2000}
-                      />
-                    </div>
-                  </CarouselItem>
-                );
-              })}
-            </CarouselContent>
-          </Carousel>
-        </section>
+          <section className="flex md:hidden">
+            <Carousel className="w-full overflow-visible" opts={{ loop: true }}>
+              <CarouselContent className="overflow-visible">
+                {gallery.map((image: any) => {
+                  return (
+                    <CarouselItem key={image._key} className="basis-1/2">
+                      <div className="aspect-square overflow-hidden rounded-lg">
+                        <figcaption className="absolute bottom-0 mb-2 ml-2 flex flex-row rounded-full bg-white/30 p-2 px-3 text-black backdrop-blur-md">
+                          <p className="text-xs">{image.alt}&nbsp;</p>
+                          <p className="whitespace-nowrap text-xs text-stone-500">
+                            · Education
+                          </p>
+                        </figcaption>
+                        <Image
+                          src={urlForImage(image)?.url() as string}
+                          alt={image.alt}
+                          width={2000}
+                          height={2000}
+                        />
+                      </div>
+                    </CarouselItem>
+                  );
+                })}
+              </CarouselContent>
+            </Carousel>
+          </section>
+          <section className="flex md:hidden">
+            <Carousel
+              className="w-full overflow-visible pt-4"
+              opts={{ loop: true }}
+              delay={6500}
+            >
+              <CarouselContent className="overflow-visible">
+                {gallery.map((image: any) => {
+                  return (
+                    <CarouselItem key={image._key} className="basis-1/2">
+                      <div className="aspect-square overflow-hidden rounded-lg">
+                        <figcaption className="absolute bottom-0 mb-2 ml-2 flex flex-row rounded-full bg-white/30 p-2 px-3 text-black backdrop-blur-md">
+                          <p className="text-xs">{image.alt}&nbsp;</p>
+                          <p className="whitespace-nowrap text-xs text-stone-500">
+                            · Education
+                          </p>
+                        </figcaption>
+                        <Image
+                          src={urlForImage(image)?.url() as string}
+                          alt={image.alt}
+                          width={2000}
+                          height={2000}
+                        />
+                      </div>
+                    </CarouselItem>
+                  );
+                })}
+              </CarouselContent>
+            </Carousel>
+          </section>
 
-        {/* Desktop Gallery */}
+          {/* Desktop Gallery */}
 
-        <section className="hidden grid-cols-2 gap-4 md:grid md:w-1/2">
-          <FadeCarousel items={gallery} options={{ delay: 4200 }} />
-          <FadeCarousel items={gallery} options={{ delay: 9500 }} />
-          <FadeCarousel items={gallery} options={{ delay: 6200 }} />
-          <FadeCarousel items={gallery} options={{ delay: 5600 }} />
-        </section>
+          <section className="hidden grid-cols-2 gap-4 md:grid md:w-1/2">
+            <FadeCarousel items={gallery} options={{ delay: 4200 }} />
+            <FadeCarousel items={gallery} options={{ delay: 9500 }} />
+            <FadeCarousel items={gallery} options={{ delay: 6200 }} />
+            <FadeCarousel items={gallery} options={{ delay: 5600 }} />
+          </section>
+        </div>
       </BlockContainer>
 
       {/* Industries Served */}
 
-      <BlockContainer className="py-10">
-        <Tabs
-          defaultValue={tabs[0].industry}
-          className="flex w-full flex-row items-stretch"
-        >
-          <section className="w-1/2">
-            <TabsList className="flex flex-col">
-              {tabs.map((tab: any) => {
-                return (
-                  <TabsTrigger key={tab._key} value={tab.industry} className="">
-                    {tab.industry}
-                  </TabsTrigger>
-                );
-              })}
-            </TabsList>
-          </section>
-          <section className="w-1/2">
-            {tabs.map((tab: any) => {
-              //Check the lqip reference doesn't break when leaving test
-              const imageAsset = tab.image;
-              const lqip = tab.image.fullAsset.metadata.lqip;
-              return (
-                <TabsContent key={tab._key} value={tab.industry}>
-                  <Image
-                    src={urlForImage(imageAsset)?.url() as string}
-                    height={500}
-                    width={700}
-                    alt={imageAsset.alt || ""}
-                    placeholder="blur"
-                    blurDataURL={lqip || ""}
-                  />
-                </TabsContent>
-              );
-            })}
-          </section>
-        </Tabs>
+      <BlockContainer className="relative px-4 py-32 md:px-10">
+        <section className="flex w-full flex-col border-stone-400 pt-2 md:gap-20 md:border-t md:pt-8">
+          <h3 className="mb-9 tracking-tight md:text-5xl">
+            Industries we've served
+          </h3>
+          <HoverTabs tabs={tabs} />
+        </section>
       </BlockContainer>
     </main>
   );
