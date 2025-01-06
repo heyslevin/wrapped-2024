@@ -10,46 +10,71 @@ export default function HoverTabs({ tabs }: any) {
   const [activeTab, setActiveTab] = React.useState(tabs[0].industry);
   const [hiddenImage, setHiddenImage] = React.useState(true);
   const [isOffDom, setOffDom] = React.useState(true);
+  const [isHovering, setIsHovering] = React.useState(false);
 
+  // Handle image hiding and removal from DOM
   React.useEffect(() => {
-    if (isOffDom) {
-      return;
+    let hideTimeout: NodeJS.Timeout;
+    let offDomTimeout: NodeJS.Timeout;
+
+    if (isHovering) {
+      setHiddenImage(false);
+      setOffDom(false);
+    } else {
+      hideTimeout = setTimeout(() => {
+        setHiddenImage(true);
+        console.log("image hidden");
+      }, 1400);
     }
 
-    const offDomTimeout = window.setTimeout(() => {
-      console.log("offDom");
-      setOffDom(true);
-    }, 2000);
+    if (hiddenImage && !isHovering) {
+      offDomTimeout = setTimeout(() => {
+        console.log("offDom");
+        setOffDom(true);
+      }, 100);
+    }
 
     return () => {
-      window.clearTimeout(offDomTimeout);
+      clearTimeout(hideTimeout);
+      clearTimeout(offDomTimeout);
     };
+  }, [isHovering, hiddenImage]);
+
+  // Automatically start hide animation after a delay on mobile
+  React.useEffect(() => {
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    if (isMobile && !hiddenImage) {
+      const mobileTimeout = setTimeout(() => {
+        setIsHovering(false);
+      }, 1500); // Auto-hide after 3 seconds on mobile
+
+      return () => clearTimeout(mobileTimeout);
+    }
   }, [hiddenImage]);
 
-  function handleHover(industry: any): any {
-    // if (hiddenImage) {
-    //   return;
-    // }
-    setOffDom(false);
-    setHiddenImage(false);
+  function handleHover(industry: any) {
+    setIsHovering(true);
     setActiveTab(industry);
-
-    const hideTimeout = window.setTimeout(() => {
-      setHiddenImage(true);
-      console.log("image hidden");
-    }, 2000);
-    return () => {
-      window.clearTimeout(hideTimeout);
-    };
   }
 
+  function handleMouseLeave() {
+    setIsHovering(false);
+  }
+
+  function handleTouch(industry: any) {
+    setIsHovering(true);
+    setActiveTab(industry);
+  }
   return (
     <Tabs
       value={activeTab}
       className="flex w-full flex-row items-stretch md:gap-6"
     >
       <section className="w-full md:w-1/2">
-        <TabsList className="flex flex-col border-t border-slate-300">
+        <TabsList
+          onMouseLeave={handleMouseLeave}
+          className="flex flex-col border-t border-slate-300"
+        >
           {tabs.map((tab: any) => {
             return (
               <TabsTrigger
@@ -57,6 +82,8 @@ export default function HoverTabs({ tabs }: any) {
                 value={tab.industry}
                 className="flex items-center border-b border-slate-300 py-1 md:py-3"
                 onMouseEnter={() => handleHover(tab.industry)}
+                onClick={() => handleTouch(tab.industry)}
+                onTouchStart={() => handleTouch(tab.industry)}
               >
                 <h3 className="text-xl group-data-[state=inactive]:text-stone-500 md:text-xl">
                   {tab.industry}

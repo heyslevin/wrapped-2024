@@ -109,6 +109,48 @@ export default defineType({
         }),
       ],
     }),
+    defineField({
+      name: 'iniciatives',
+      type: 'array',
+      of: [
+        defineField({
+          name: 'item',
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'title',
+              type: 'string',
+            }),
+            defineField({
+              name: 'description',
+              type: 'text',
+              rows: 2,
+            }),
+            defineField({
+              name: 'color',
+              type: 'string',
+              options: {
+                list: [
+                  {title: 'blue', value: 'blue'},
+                  {title: 'red', value: 'red'},
+                  {title: 'green', value: 'green'},
+                ],
+              },
+            }),
+            defineField({
+              name: 'image',
+              type: 'image',
+              fields: [
+                defineField({
+                  name: 'alt',
+                  type: 'string',
+                }),
+              ],
+            }),
+          ],
+        }),
+      ],
+    }),
   ],
   icon: () => <Blocks size={16} />,
 })

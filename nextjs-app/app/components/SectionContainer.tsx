@@ -17,14 +17,16 @@ export default function SectionContainer({
 }: SectionContainerProps) {
   return (
     <BlockContainer
+      lang="en"
       className={cn(
         "flex-col gap-10 px-8 py-0 text-center md:py-12",
         className,
       )}
     >
       <h2
+        lang="en"
         className={cn(
-          "w-5/6 break-all text-7xl font-black uppercase leading-[4rem] motion-delay-2000 md:w-full md:text-9xl md:leading-[6rem]",
+          "w-5/6 hyphens-auto break-words text-7xl font-black uppercase leading-[4rem] tracking-tight motion-delay-2000 md:w-full md:text-8xl md:leading-[6rem]",
         )}
       >
         {title}

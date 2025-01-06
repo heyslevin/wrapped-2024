@@ -78,6 +78,13 @@ const PAGE_BUILDER_CONTENT_QUERY = /* groq */ `
           "fullAsset": asset->
         }
       },
+            iniciatives[] {
+        ...,
+        image {
+          ...,
+          "fullAsset": asset->
+        }
+      },
       _type == "paragraph" => {
       ...,
       children[]{

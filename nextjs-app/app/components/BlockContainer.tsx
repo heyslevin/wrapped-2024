@@ -4,6 +4,7 @@ interface BlockContainerProps {
   children?: React.ReactNode;
   className?: string;
   size?: keyof typeof STYLES;
+  lang?: string;
 }
 
 interface StyleType {
@@ -26,7 +27,7 @@ export default function BlockContainer({
     // className="md:h-[745px] md:py-10 relative flex w-full items-center justify-center overflow-hidden bg-[#1868FF]"
     <section
       className={cn(
-        "flex w-full items-center justify-center",
+        "flex w-full items-center justify-center py-16 md:py-12",
         styles?.height || "",
         className || "",
       )}
