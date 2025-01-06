@@ -49,20 +49,20 @@ export default function HoverTabs({ tabs }: any) {
       className="flex w-full flex-row items-stretch md:gap-6"
     >
       <section className="w-full md:w-1/2">
-        <TabsList className="flex flex-col border-t border-slate-500">
+        <TabsList className="flex flex-col border-t border-slate-300">
           {tabs.map((tab: any) => {
             return (
               <TabsTrigger
                 key={tab._key}
                 value={tab.industry}
-                className="flex items-center py-1 md:py-3"
+                className="flex items-center border-b border-slate-300 py-1 md:py-3"
                 onMouseEnter={() => handleHover(tab.industry)}
               >
-                <h3 className="text-xl group-data-[state=inactive]:text-stone-500 md:text-3xl">
+                <h3 className="text-xl group-data-[state=inactive]:text-stone-500 md:text-xl">
                   {tab.industry}
                 </h3>
-                <div className="w-20 rounded-lg border border-slate-300 p-2 group-data-[state=active]:border-[#0000FF] group-data-[state=active]:bg-[#CFFFFF]">
-                  <p className="text-lg group-data-[state=active]:text-[#0000FF] group-data-[state=inactive]:text-slate-500 md:text-2xl">
+                <div className="w-20 rounded-lg border border-slate-400 p-2 group-data-[state=active]:border-[#0000FF] group-data-[state=active]:bg-[#CFFFFF]">
+                  <p className="text-lg group-data-[state=active]:text-[#0000FF] group-data-[state=inactive]:text-slate-500 md:text-xl">
                     {tab.percentage}%
                   </p>
                 </div>

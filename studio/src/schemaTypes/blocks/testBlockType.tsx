@@ -84,6 +84,31 @@ export default defineType({
         }),
       ],
     }),
+    defineField({
+      name: 'metrics',
+      type: 'array',
+      of: [
+        defineField({
+          name: 'metric',
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'bigNumber',
+              type: 'string',
+            }),
+            defineField({
+              name: 'title',
+              type: 'string',
+            }),
+            defineField({
+              name: 'description',
+              type: 'text',
+              rows: 2,
+            }),
+          ],
+        }),
+      ],
+    }),
   ],
   icon: () => <Blocks size={16} />,
 })

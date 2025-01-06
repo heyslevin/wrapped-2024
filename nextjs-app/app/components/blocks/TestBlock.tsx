@@ -24,6 +24,8 @@ export default function TestBlock({ block }: any) {
   const image = block.logo;
   const gallery = block.gallery;
   const tabs = block.tabs;
+  const metrics = block.metrics;
+
   return (
     <main className="relative flex flex-col items-center bg-[#EBEBEB]">
       {/* Hero block */}
@@ -167,8 +169,8 @@ export default function TestBlock({ block }: any) {
       {/* Portfolio Block */}
 
       <BlockContainer className="md:px-10">
-        <div className="flex w-full flex-col items-start justify-start gap-5 border-t border-stone-400 py-4 md:mb-36 md:mt-20 md:flex-row md:items-stretch md:py-10">
-          <section className="mb-6 flex w-full flex-col items-center px-5 tracking-tight md:mb-0 md:w-1/2 md:items-start md:px-0 md:text-5xl">
+        <div className="flex w-full flex-col items-start justify-start gap-5 border-stone-400 py-4 md:mt-20 md:flex-row md:items-stretch md:py-10">
+          <section className="mb-6 flex w-full flex-col items-center px-5 leading-tight tracking-tighter md:mb-0 md:w-1/2 md:items-start md:px-0 md:text-3xl">
             <h2 className="text-9xl font-medium md:mb-auto md:text-[200px]">
               8
             </h2>
@@ -248,9 +250,9 @@ export default function TestBlock({ block }: any) {
 
       {/* Industries Served */}
 
-      <BlockContainer className="z-10 px-4 py-32 md:px-10">
-        <section className="flex w-full flex-col border-stone-400 pt-2 md:gap-20 md:border-t md:pt-8">
-          <h3 className="mb-9 tracking-tight md:text-5xl">
+      <BlockContainer className="z-10 px-4 py-16 md:px-10 md:py-32">
+        <section className="flex w-full flex-col border-stone-400 pt-2 md:gap-8 md:pt-8">
+          <h3 className="mb-3 w-3/4 text-balance text-2xl leading-tight tracking-tight md:text-3xl">
             Industries we've served
           </h3>
           <HoverTabs tabs={tabs} />
@@ -259,39 +261,37 @@ export default function TestBlock({ block }: any) {
 
       {/* Metrics Carousel */}
 
-      <BlockContainer className="isolate mb-36 px-10">
+      <BlockContainer className="isolate mb-36 md:px-10">
         <div className="w-full">
           <Carousel className="w-full">
-            <CarouselContent>
-              <CarouselItem className="basis-1/3">
-                <article className="flex h-96 basis-1/4 flex-col rounded-lg bg-stone-300 p-4">
-                  <h4 className="mb-auto text-8xl font-medium tracking-tighter">
-                    30
-                  </h4>
-                  <p className="text-lg">Books</p>
-                  <p className="text-lg text-stone-500">
-                    We’ve have some bookworms in the team
-                  </p>
-                </article>
-              </CarouselItem>
-              <CarouselItem className="basis-1/3">
-                <article className="flex h-96 basis-1/4 flex-col rounded-lg bg-stone-300 p-4">
-                  <h4 className="mb-auto text-8xl">30</h4>
-                  <p className="text-lg">Books</p>
-                  <p className="text-lg text-stone-500">
-                    We’ve have some bookworms in the team
-                  </p>
-                </article>
-              </CarouselItem>
-              <CarouselItem className="basis-1/3">
-                <article className="flex h-96 basis-1/4 flex-col rounded-lg bg-stone-300 p-4">
-                  <h4 className="mb-auto text-8xl">30</h4>
-                  <p className="text-lg">Books</p>
-                  <p className="text-lg text-stone-500">
-                    We’ve have some bookworms in the team
-                  </p>
-                </article>
-              </CarouselItem>
+            <div className="mb-8 flex w-full items-center justify-between px-4 md:px-0">
+              <h2 className="text-2xl tracking-tight md:text-3xl">
+                Weird numbers
+              </h2>
+              <div className="hidden w-fit gap-2 md:flex">
+                <CarouselPrevious className="relative left-auto top-auto transform-none" />
+                <CarouselNext className="relative right-auto top-auto transform-none" />
+              </div>
+            </div>
+            <CarouselContent className="pl-4 md:pl-0">
+              {metrics.map((metric: any) => {
+                return (
+                  <CarouselItem
+                    key={metric._key}
+                    className="basis-[85%] last-of-type:pr-4 md:basis-1/3 md:last-of-type:pr-0"
+                  >
+                    <article className="flex h-80 flex-col rounded-lg bg-stone-300 p-4">
+                      <h4 className="mb-auto text-8xl font-medium tracking-tighter">
+                        {metric.bigNumber}
+                      </h4>
+                      <p className="text-lg">{metric.title}</p>
+                      <p className="text-lg leading-tight text-stone-500">
+                        {metric.description}
+                      </p>
+                    </article>
+                  </CarouselItem>
+                );
+              })}
             </CarouselContent>
           </Carousel>
         </div>
