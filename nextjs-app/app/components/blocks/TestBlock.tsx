@@ -248,13 +248,53 @@ export default function TestBlock({ block }: any) {
 
       {/* Industries Served */}
 
-      <BlockContainer className="relative px-4 py-32 md:px-10">
+      <BlockContainer className="z-10 px-4 py-32 md:px-10">
         <section className="flex w-full flex-col border-stone-400 pt-2 md:gap-20 md:border-t md:pt-8">
           <h3 className="mb-9 tracking-tight md:text-5xl">
             Industries we've served
           </h3>
           <HoverTabs tabs={tabs} />
         </section>
+      </BlockContainer>
+
+      {/* Metrics Carousel */}
+
+      <BlockContainer className="isolate mb-36 px-10">
+        <div className="w-full">
+          <Carousel className="w-full">
+            <CarouselContent>
+              <CarouselItem className="basis-1/3">
+                <article className="flex h-96 basis-1/4 flex-col rounded-lg bg-stone-300 p-4">
+                  <h4 className="mb-auto text-8xl font-medium tracking-tighter">
+                    30
+                  </h4>
+                  <p className="text-lg">Books</p>
+                  <p className="text-lg text-stone-500">
+                    We’ve have some bookworms in the team
+                  </p>
+                </article>
+              </CarouselItem>
+              <CarouselItem className="basis-1/3">
+                <article className="flex h-96 basis-1/4 flex-col rounded-lg bg-stone-300 p-4">
+                  <h4 className="mb-auto text-8xl">30</h4>
+                  <p className="text-lg">Books</p>
+                  <p className="text-lg text-stone-500">
+                    We’ve have some bookworms in the team
+                  </p>
+                </article>
+              </CarouselItem>
+              <CarouselItem className="basis-1/3">
+                <article className="flex h-96 basis-1/4 flex-col rounded-lg bg-stone-300 p-4">
+                  <h4 className="mb-auto text-8xl">30</h4>
+                  <p className="text-lg">Books</p>
+                  <p className="text-lg text-stone-500">
+                    We’ve have some bookworms in the team
+                  </p>
+                </article>
+              </CarouselItem>
+            </CarouselContent>
+          </Carousel>
+        </div>
       </BlockContainer>
     </main>
   );

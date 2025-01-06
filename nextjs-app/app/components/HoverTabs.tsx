@@ -9,10 +9,38 @@ import { cn } from "@/lib/utils";
 export default function HoverTabs({ tabs }: any) {
   const [activeTab, setActiveTab] = React.useState(tabs[0].industry);
   const [hiddenImage, setHiddenImage] = React.useState(true);
+  const [isOffDom, setOffDom] = React.useState(true);
+
+  React.useEffect(() => {
+    if (isOffDom) {
+      return;
+    }
+
+    const offDomTimeout = window.setTimeout(() => {
+      console.log("offDom");
+      setOffDom(true);
+    }, 2000);
+
+    return () => {
+      window.clearTimeout(offDomTimeout);
+    };
+  }, [hiddenImage]);
 
   function handleHover(industry: any): any {
+    // if (hiddenImage) {
+    //   return;
+    // }
+    setOffDom(false);
     setHiddenImage(false);
     setActiveTab(industry);
+
+    const hideTimeout = window.setTimeout(() => {
+      setHiddenImage(true);
+      console.log("image hidden");
+    }, 2000);
+    return () => {
+      window.clearTimeout(hideTimeout);
+    };
   }
 
   return (
@@ -51,25 +79,29 @@ export default function HoverTabs({ tabs }: any) {
           return (
             <TabsContent key={tab._key} value={tab.industry}>
               <div className="flex md:hidden">
-                <Image
-                  src={urlForImage(imageAsset)?.url() as string}
-                  height={500}
-                  width={500}
-                  alt={imageAsset.alt || ""}
-                  placeholder="blur"
-                  blurDataURL={lqip || ""}
-                  className={cn(
-                    "hover:opacity-100 md:opacity-100",
-                    hiddenImage
-                      ? "opacity-0"
-                      : "motion-preset-fade-lg absolute bottom-0 right-0 m-auto mb-4 mr-4 w-1/2 rounded-lg opacity-100",
-                  )}
-                />
+                {!isOffDom && (
+                  <Image
+                    src={urlForImage(imageAsset)?.url() as string}
+                    height={500}
+                    width={500}
+                    alt={imageAsset.alt || ""}
+                    placeholder="blur"
+                    blurDataURL={lqip || ""}
+                    className={cn(
+                      "hover:opacity-100",
+                      hiddenImage
+                        ? "fixed bottom-0 right-0 m-auto mb-4 mr-4 w-1/2 rounded-lg motion-opacity-out-0"
+                        : "motion-preset-fade-lg fixed bottom-0 right-0 m-auto mb-4 mr-4 w-1/2 rounded-lg opacity-100",
+                      isOffDom ? "invisible" : "visible",
+                    )}
+                  />
+                )}
               </div>
 
               {/* Desktop Image */}
               <div className="hidden md:flex">
                 <Image
+                  className="rounded-lg"
                   src={urlForImage(imageAsset)?.url() as string}
                   height={500}
                   width={700}
