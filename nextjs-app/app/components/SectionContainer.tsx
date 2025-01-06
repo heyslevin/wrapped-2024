@@ -24,7 +24,7 @@ export default function SectionContainer({
     >
       <h2
         className={cn(
-          "w-5/6 text-7xl font-black uppercase leading-[4rem] motion-delay-2000 md:w-full md:text-9xl md:leading-[6rem]",
+          "w-5/6 break-all text-7xl font-black uppercase leading-[4rem] motion-delay-2000 md:w-full md:text-9xl md:leading-[6rem]",
         )}
       >
         {title}

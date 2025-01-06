@@ -20,7 +20,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
 import HoverTabs from "../HoverTabs";
 
 export default function TestBlock({ block }: any) {
-  console.log({ test: block.tabs[0] });
+  console.log({ test: block.gallery[0].asset });
   const image = block.logo;
   const gallery = block.gallery;
   const tabs = block.tabs;
@@ -294,6 +294,37 @@ export default function TestBlock({ block }: any) {
               })}
             </CarouselContent>
           </Carousel>
+        </div>
+      </BlockContainer>
+
+      <SectionContainer
+        className="py-16 md:py-28"
+        title="Iniciatives"
+        paragraph="They’re actively changing how we work, live, and interact. Together, we strive to co-create the world we want to live in."
+      />
+
+      <BlockContainer className="px-10 pb-24">
+        <div className="flex w-full flex-col gap-5 md:flex-row">
+          <div className="flex aspect-square flex-col rounded-lg bg-[#226452] p-4 md:h-[700px] md:w-1/2">
+            <div className="mb-auto text-5xl font-bold uppercase tracking-tighter text-white md:text-8xl md:leading-[6rem]">
+              Off The Record
+            </div>
+            <div className="text-lg text-white">
+              A recap of the highlights our this year.
+            </div>
+            <div className="text-lg text-[#CFFFFF]">
+              A recap of the highlights our this year.
+            </div>
+          </div>
+          <div className="aspect-square md:w-1/2">
+            <Image
+              className="h-full rounded-lg object-cover"
+              src={urlForImage(gallery[0])?.url() as string}
+              alt={image?.alt || ""}
+              width={3000}
+              height={3000}
+            />
+          </div>
         </div>
       </BlockContainer>
     </main>
