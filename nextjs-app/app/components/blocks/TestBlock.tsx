@@ -78,7 +78,7 @@ export default function TestBlock({ block }: any) {
       >
         {/* Background */}
 
-        <div className="absolute h-full w-full">
+        <div className="absolute top-0 h-screen w-full">
           <div className={`${styles.row} ${styles["row-1"]} `}></div>
           <div className={`${styles.row} ${styles["row-2"]} `}></div>
           <div className={`${styles.row} ${styles["row-3"]} `}></div>

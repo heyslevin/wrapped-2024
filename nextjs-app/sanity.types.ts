@@ -633,7 +633,7 @@ export type GET_NAV_LINKSResult = {
   }> | null;
 } | null;
 // Variable: HOME_GET_PAGEQUERY
-// Query: *[_type == 'page' && isHome.status == true][0]{    _id,    name,    slug,    heading,    subheading,        "pageBuilder": pageBuilder[]{      ...,      _type == "callToAction" => {        ...,            link {      ...,      _type == "link" => {        "page": page->slug.current,        "post": post->slug.current      }    },      },      _type == "hero" => {        ...,            button {      ...,      buttonText,      link {        ...,        _type == "link" => {          "page": page->slug.current,          "post": post->slug.current        }      }    },      },      _type == "tabs" => {        ...,        "tabs": tabs[] {          ...,          "image": image {            ...,            "imageUrl": asset->.url,            "blurDataUrl": asset->.metadata.lqip,          }        }      },      _type == "gallery" => {        ...,        "gallery": gallery[] {          ...,          "image": {            ...,            "imageUrl": asset->.url,            "blurDataUrl": asset->.metadata.lqip,          }        }      },      tabs[] {        ...,        image {          ...,          "fullAsset": asset->        }      },      _type == "paragraph" => {      ...,      children[]{        ...,        _type == 'image' => {          ...,          asset->        }      }    },    _type == "tabs" => {      ...,      children[]{        ...,        _type == 'image' => {          ...,          asset->        }      }    },    _type == "textAndImage" => {      ...,      "image": {            ...,            "imageUrl": asset->.url,            "blurDataUrl": asset->.metadata.lqip,          }    },    _type == "form" => {      ...,    },    _type == "metrics" => {      ...,    },    _type == "accordion" => {      ...,    }    }            ,  }
+// Query: *[_type == 'page' && isHome.status == true][0]{    _id,    name,    slug,    heading,    subheading,        "pageBuilder": pageBuilder[]{      ...,      _type == "callToAction" => {        ...,            link {      ...,      _type == "link" => {        "page": page->slug.current,        "post": post->slug.current      }    },      },      _type == "hero" => {        ...,            button {      ...,      buttonText,      link {        ...,        _type == "link" => {          "page": page->slug.current,          "post": post->slug.current        }      }    },      },      _type == "tabs" => {        ...,        "tabs": tabs[] {          ...,          "image": image {            ...,            "imageUrl": asset->.url,            "blurDataUrl": asset->.metadata.lqip,          }        }      },      _type == "gallery" => {        ...,        "gallery": gallery[] {          ...,          "image": {            ...,            "imageUrl": asset->.url,            "blurDataUrl": asset->.metadata.lqip,          }        }      },      tabs[] {        ...,        image {          ...,          "fullAsset": asset->        }      },      iniciatives[] {        ...,        image {          ...,          "fullAsset": asset->        }      },      testimonials[] {        ...,        logo {          ...,          "fullAsset": asset->        }      },            footer {        ...,        logo {          ...,          "fullAsset": asset->        }      },      _type == "paragraph" => {      ...,      children[]{        ...,        _type == 'image' => {          ...,          asset->        }      }    },    _type == "tabs" => {      ...,      children[]{        ...,        _type == 'image' => {          ...,          asset->        }      }    },    _type == "textAndImage" => {      ...,      "image": {            ...,            "imageUrl": asset->.url,            "blurDataUrl": asset->.metadata.lqip,          }    },    _type == "form" => {      ...,    },    _type == "metrics" => {      ...,    },    _type == "accordion" => {      ...,    }    }            ,  }
 export type HOME_GET_PAGEQUERYResult = {
   _id: string;
   name: string | null;
@@ -655,6 +655,9 @@ export type HOME_GET_PAGEQUERYResult = {
           _key: string;
         }>;
         tabs: null;
+        iniciatives: null;
+        testimonials: null;
+        footer: null;
       }
     | {
         _key: string;
@@ -672,6 +675,9 @@ export type HOME_GET_PAGEQUERYResult = {
           post: null;
         } | null;
         tabs: null;
+        iniciatives: null;
+        testimonials: null;
+        footer: null;
       }
     | {
         _key: string;
@@ -687,6 +693,9 @@ export type HOME_GET_PAGEQUERYResult = {
           _key: string;
         }>;
         tabs: null;
+        iniciatives: null;
+        testimonials: null;
+        footer: null;
       }
     | {
         _key: string;
@@ -721,6 +730,9 @@ export type HOME_GET_PAGEQUERYResult = {
           };
         }> | null;
         tabs: null;
+        iniciatives: null;
+        testimonials: null;
+        footer: null;
       }
     | {
         _key: string;
@@ -741,6 +753,9 @@ export type HOME_GET_PAGEQUERYResult = {
           } | null;
         } | null;
         tabs: null;
+        iniciatives: null;
+        testimonials: null;
+        footer: null;
       }
     | {
         _key: string;
@@ -788,6 +803,9 @@ export type HOME_GET_PAGEQUERYResult = {
           _key: string;
         }>;
         tabs: null;
+        iniciatives: null;
+        testimonials: null;
+        footer: null;
       }
     | {
         _key: string;
@@ -804,6 +822,9 @@ export type HOME_GET_PAGEQUERYResult = {
           _key: string;
         }>;
         tabs: null;
+        iniciatives: null;
+        testimonials: null;
+        footer: null;
       }
     | {
         _key: string;
@@ -836,6 +857,9 @@ export type HOME_GET_PAGEQUERYResult = {
           _key: string;
         }>;
         tabs: null;
+        iniciatives: null;
+        testimonials: null;
+        footer: null;
         children: null;
       }
     | {
@@ -862,6 +886,9 @@ export type HOME_GET_PAGEQUERYResult = {
           _type: "tab";
           _key: string;
         }>;
+        iniciatives: null;
+        testimonials: null;
+        footer: null;
         children: null;
       }
     | {
@@ -902,11 +929,14 @@ export type HOME_GET_PAGEQUERYResult = {
           link?: Link;
         };
         tabs: null;
+        iniciatives: null;
+        testimonials: null;
+        footer: null;
       }
   > | null;
 } | null;
 // Variable: getPageQuery
-// Query: *[_type == 'page' && slug.current == $slug][0]{    _id,    name,    slug,    heading,    subheading,        "pageBuilder": pageBuilder[]{      ...,      _type == "callToAction" => {        ...,            link {      ...,      _type == "link" => {        "page": page->slug.current,        "post": post->slug.current      }    },      },      _type == "hero" => {        ...,            button {      ...,      buttonText,      link {        ...,        _type == "link" => {          "page": page->slug.current,          "post": post->slug.current        }      }    },      },      _type == "tabs" => {        ...,        "tabs": tabs[] {          ...,          "image": image {            ...,            "imageUrl": asset->.url,            "blurDataUrl": asset->.metadata.lqip,          }        }      },      _type == "gallery" => {        ...,        "gallery": gallery[] {          ...,          "image": {            ...,            "imageUrl": asset->.url,            "blurDataUrl": asset->.metadata.lqip,          }        }      },      tabs[] {        ...,        image {          ...,          "fullAsset": asset->        }      },      _type == "paragraph" => {      ...,      children[]{        ...,        _type == 'image' => {          ...,          asset->        }      }    },    _type == "tabs" => {      ...,      children[]{        ...,        _type == 'image' => {          ...,          asset->        }      }    },    _type == "textAndImage" => {      ...,      "image": {            ...,            "imageUrl": asset->.url,            "blurDataUrl": asset->.metadata.lqip,          }    },    _type == "form" => {      ...,    },    _type == "metrics" => {      ...,    },    _type == "accordion" => {      ...,    }    }            ,  }
+// Query: *[_type == 'page' && slug.current == $slug][0]{    _id,    name,    slug,    heading,    subheading,        "pageBuilder": pageBuilder[]{      ...,      _type == "callToAction" => {        ...,            link {      ...,      _type == "link" => {        "page": page->slug.current,        "post": post->slug.current      }    },      },      _type == "hero" => {        ...,            button {      ...,      buttonText,      link {        ...,        _type == "link" => {          "page": page->slug.current,          "post": post->slug.current        }      }    },      },      _type == "tabs" => {        ...,        "tabs": tabs[] {          ...,          "image": image {            ...,            "imageUrl": asset->.url,            "blurDataUrl": asset->.metadata.lqip,          }        }      },      _type == "gallery" => {        ...,        "gallery": gallery[] {          ...,          "image": {            ...,            "imageUrl": asset->.url,            "blurDataUrl": asset->.metadata.lqip,          }        }      },      tabs[] {        ...,        image {          ...,          "fullAsset": asset->        }      },      iniciatives[] {        ...,        image {          ...,          "fullAsset": asset->        }      },      testimonials[] {        ...,        logo {          ...,          "fullAsset": asset->        }      },            footer {        ...,        logo {          ...,          "fullAsset": asset->        }      },      _type == "paragraph" => {      ...,      children[]{        ...,        _type == 'image' => {          ...,          asset->        }      }    },    _type == "tabs" => {      ...,      children[]{        ...,        _type == 'image' => {          ...,          asset->        }      }    },    _type == "textAndImage" => {      ...,      "image": {            ...,            "imageUrl": asset->.url,            "blurDataUrl": asset->.metadata.lqip,          }    },    _type == "form" => {      ...,    },    _type == "metrics" => {      ...,    },    _type == "accordion" => {      ...,    }    }            ,  }
 export type GetPageQueryResult = {
   _id: string;
   name: string | null;
@@ -928,6 +958,9 @@ export type GetPageQueryResult = {
           _key: string;
         }>;
         tabs: null;
+        iniciatives: null;
+        testimonials: null;
+        footer: null;
       }
     | {
         _key: string;
@@ -945,6 +978,9 @@ export type GetPageQueryResult = {
           post: null;
         } | null;
         tabs: null;
+        iniciatives: null;
+        testimonials: null;
+        footer: null;
       }
     | {
         _key: string;
@@ -960,6 +996,9 @@ export type GetPageQueryResult = {
           _key: string;
         }>;
         tabs: null;
+        iniciatives: null;
+        testimonials: null;
+        footer: null;
       }
     | {
         _key: string;
@@ -994,6 +1033,9 @@ export type GetPageQueryResult = {
           };
         }> | null;
         tabs: null;
+        iniciatives: null;
+        testimonials: null;
+        footer: null;
       }
     | {
         _key: string;
@@ -1014,6 +1056,9 @@ export type GetPageQueryResult = {
           } | null;
         } | null;
         tabs: null;
+        iniciatives: null;
+        testimonials: null;
+        footer: null;
       }
     | {
         _key: string;
@@ -1061,6 +1106,9 @@ export type GetPageQueryResult = {
           _key: string;
         }>;
         tabs: null;
+        iniciatives: null;
+        testimonials: null;
+        footer: null;
       }
     | {
         _key: string;
@@ -1077,6 +1125,9 @@ export type GetPageQueryResult = {
           _key: string;
         }>;
         tabs: null;
+        iniciatives: null;
+        testimonials: null;
+        footer: null;
       }
     | {
         _key: string;
@@ -1109,6 +1160,9 @@ export type GetPageQueryResult = {
           _key: string;
         }>;
         tabs: null;
+        iniciatives: null;
+        testimonials: null;
+        footer: null;
         children: null;
       }
     | {
@@ -1135,6 +1189,9 @@ export type GetPageQueryResult = {
           _type: "tab";
           _key: string;
         }>;
+        iniciatives: null;
+        testimonials: null;
+        footer: null;
         children: null;
       }
     | {
@@ -1175,6 +1232,9 @@ export type GetPageQueryResult = {
           link?: Link;
         };
         tabs: null;
+        iniciatives: null;
+        testimonials: null;
+        footer: null;
       }
   > | null;
 } | null;
@@ -1347,8 +1407,8 @@ declare module "@sanity/client" {
   interface SanityQueries {
     '*[_type == "settings"][0]': SettingsQueryResult;
     '\n  *[_type == "header"][0] {\n  ...,\n  navigation[] {\n    ...,\n    "link": link {\n      ...,\n      "page": page->.slug.current,\n    }\n  }\n}\n  ': GET_NAV_LINKSResult;
-    '\n  *[_type == \'page\' && isHome.status == true][0]{\n    _id,\n    name,\n    slug,\n    heading,\n    subheading,\n    \n    "pageBuilder": pageBuilder[]{\n      ...,\n      _type == "callToAction" => {\n        ...,\n        \n    link {\n      ...,\n      _type == "link" => {\n        "page": page->slug.current,\n        "post": post->slug.current\n      }\n    }\n,\n      },\n      _type == "hero" => {\n        ...,\n        \n    button {\n      ...,\n      buttonText,\n      link {\n        ...,\n        _type == "link" => {\n          "page": page->slug.current,\n          "post": post->slug.current\n        }\n      }\n    }\n,\n      },\n      _type == "tabs" => {\n        ...,\n        "tabs": tabs[] {\n          ...,\n          "image": image {\n            ...,\n            "imageUrl": asset->.url,\n            "blurDataUrl": asset->.metadata.lqip,\n          }\n        }\n      },\n      _type == "gallery" => {\n        ...,\n        "gallery": gallery[] {\n          ...,\n          "image": {\n            ...,\n            "imageUrl": asset->.url,\n            "blurDataUrl": asset->.metadata.lqip,\n          }\n        }\n      },\n      tabs[] {\n        ...,\n        image {\n          ...,\n          "fullAsset": asset->\n        }\n      },\n      _type == "paragraph" => {\n      ...,\n      children[]{\n        ...,\n        _type == \'image\' => {\n          ...,\n          asset->\n        }\n      }\n    },\n    _type == "tabs" => {\n      ...,\n      children[]{\n        ...,\n        _type == \'image\' => {\n          ...,\n          asset->\n        }\n      }\n    },\n    _type == "textAndImage" => {\n      ...,\n      "image": {\n            ...,\n            "imageUrl": asset->.url,\n            "blurDataUrl": asset->.metadata.lqip,\n          }\n    },\n    _type == "form" => {\n      ...,\n    },\n    _type == "metrics" => {\n      ...,\n    },\n    _type == "accordion" => {\n      ...,\n    }\n\n    }\n    \n    \n    \n,\n  }\n': HOME_GET_PAGEQUERYResult;
-    '\n  *[_type == \'page\' && slug.current == $slug][0]{\n    _id,\n    name,\n    slug,\n    heading,\n    subheading,\n    \n    "pageBuilder": pageBuilder[]{\n      ...,\n      _type == "callToAction" => {\n        ...,\n        \n    link {\n      ...,\n      _type == "link" => {\n        "page": page->slug.current,\n        "post": post->slug.current\n      }\n    }\n,\n      },\n      _type == "hero" => {\n        ...,\n        \n    button {\n      ...,\n      buttonText,\n      link {\n        ...,\n        _type == "link" => {\n          "page": page->slug.current,\n          "post": post->slug.current\n        }\n      }\n    }\n,\n      },\n      _type == "tabs" => {\n        ...,\n        "tabs": tabs[] {\n          ...,\n          "image": image {\n            ...,\n            "imageUrl": asset->.url,\n            "blurDataUrl": asset->.metadata.lqip,\n          }\n        }\n      },\n      _type == "gallery" => {\n        ...,\n        "gallery": gallery[] {\n          ...,\n          "image": {\n            ...,\n            "imageUrl": asset->.url,\n            "blurDataUrl": asset->.metadata.lqip,\n          }\n        }\n      },\n      tabs[] {\n        ...,\n        image {\n          ...,\n          "fullAsset": asset->\n        }\n      },\n      _type == "paragraph" => {\n      ...,\n      children[]{\n        ...,\n        _type == \'image\' => {\n          ...,\n          asset->\n        }\n      }\n    },\n    _type == "tabs" => {\n      ...,\n      children[]{\n        ...,\n        _type == \'image\' => {\n          ...,\n          asset->\n        }\n      }\n    },\n    _type == "textAndImage" => {\n      ...,\n      "image": {\n            ...,\n            "imageUrl": asset->.url,\n            "blurDataUrl": asset->.metadata.lqip,\n          }\n    },\n    _type == "form" => {\n      ...,\n    },\n    _type == "metrics" => {\n      ...,\n    },\n    _type == "accordion" => {\n      ...,\n    }\n\n    }\n    \n    \n    \n,\n  }\n': GetPageQueryResult;
+    '\n  *[_type == \'page\' && isHome.status == true][0]{\n    _id,\n    name,\n    slug,\n    heading,\n    subheading,\n    \n    "pageBuilder": pageBuilder[]{\n      ...,\n      _type == "callToAction" => {\n        ...,\n        \n    link {\n      ...,\n      _type == "link" => {\n        "page": page->slug.current,\n        "post": post->slug.current\n      }\n    }\n,\n      },\n      _type == "hero" => {\n        ...,\n        \n    button {\n      ...,\n      buttonText,\n      link {\n        ...,\n        _type == "link" => {\n          "page": page->slug.current,\n          "post": post->slug.current\n        }\n      }\n    }\n,\n      },\n      _type == "tabs" => {\n        ...,\n        "tabs": tabs[] {\n          ...,\n          "image": image {\n            ...,\n            "imageUrl": asset->.url,\n            "blurDataUrl": asset->.metadata.lqip,\n          }\n        }\n      },\n      _type == "gallery" => {\n        ...,\n        "gallery": gallery[] {\n          ...,\n          "image": {\n            ...,\n            "imageUrl": asset->.url,\n            "blurDataUrl": asset->.metadata.lqip,\n          }\n        }\n      },\n      tabs[] {\n        ...,\n        image {\n          ...,\n          "fullAsset": asset->\n        }\n      },\n      iniciatives[] {\n        ...,\n        image {\n          ...,\n          "fullAsset": asset->\n        }\n      },\n      testimonials[] {\n        ...,\n        logo {\n          ...,\n          "fullAsset": asset->\n        }\n      },\n            footer {\n        ...,\n        logo {\n          ...,\n          "fullAsset": asset->\n        }\n      },\n      _type == "paragraph" => {\n      ...,\n      children[]{\n        ...,\n        _type == \'image\' => {\n          ...,\n          asset->\n        }\n      }\n    },\n    _type == "tabs" => {\n      ...,\n      children[]{\n        ...,\n        _type == \'image\' => {\n          ...,\n          asset->\n        }\n      }\n    },\n    _type == "textAndImage" => {\n      ...,\n      "image": {\n            ...,\n            "imageUrl": asset->.url,\n            "blurDataUrl": asset->.metadata.lqip,\n          }\n    },\n    _type == "form" => {\n      ...,\n    },\n    _type == "metrics" => {\n      ...,\n    },\n    _type == "accordion" => {\n      ...,\n    }\n\n    }\n    \n    \n    \n,\n  }\n': HOME_GET_PAGEQUERYResult;
+    '\n  *[_type == \'page\' && slug.current == $slug][0]{\n    _id,\n    name,\n    slug,\n    heading,\n    subheading,\n    \n    "pageBuilder": pageBuilder[]{\n      ...,\n      _type == "callToAction" => {\n        ...,\n        \n    link {\n      ...,\n      _type == "link" => {\n        "page": page->slug.current,\n        "post": post->slug.current\n      }\n    }\n,\n      },\n      _type == "hero" => {\n        ...,\n        \n    button {\n      ...,\n      buttonText,\n      link {\n        ...,\n        _type == "link" => {\n          "page": page->slug.current,\n          "post": post->slug.current\n        }\n      }\n    }\n,\n      },\n      _type == "tabs" => {\n        ...,\n        "tabs": tabs[] {\n          ...,\n          "image": image {\n            ...,\n            "imageUrl": asset->.url,\n            "blurDataUrl": asset->.metadata.lqip,\n          }\n        }\n      },\n      _type == "gallery" => {\n        ...,\n        "gallery": gallery[] {\n          ...,\n          "image": {\n            ...,\n            "imageUrl": asset->.url,\n            "blurDataUrl": asset->.metadata.lqip,\n          }\n        }\n      },\n      tabs[] {\n        ...,\n        image {\n          ...,\n          "fullAsset": asset->\n        }\n      },\n      iniciatives[] {\n        ...,\n        image {\n          ...,\n          "fullAsset": asset->\n        }\n      },\n      testimonials[] {\n        ...,\n        logo {\n          ...,\n          "fullAsset": asset->\n        }\n      },\n            footer {\n        ...,\n        logo {\n          ...,\n          "fullAsset": asset->\n        }\n      },\n      _type == "paragraph" => {\n      ...,\n      children[]{\n        ...,\n        _type == \'image\' => {\n          ...,\n          asset->\n        }\n      }\n    },\n    _type == "tabs" => {\n      ...,\n      children[]{\n        ...,\n        _type == \'image\' => {\n          ...,\n          asset->\n        }\n      }\n    },\n    _type == "textAndImage" => {\n      ...,\n      "image": {\n            ...,\n            "imageUrl": asset->.url,\n            "blurDataUrl": asset->.metadata.lqip,\n          }\n    },\n    _type == "form" => {\n      ...,\n    },\n    _type == "metrics" => {\n      ...,\n    },\n    _type == "accordion" => {\n      ...,\n    }\n\n    }\n    \n    \n    \n,\n  }\n': GetPageQueryResult;
     '\n  *[_type == "post" && defined(slug.current)] | order(date desc, _updatedAt desc) {\n    \n  _id,\n  "status": select(_originalId in path("drafts.**") => "draft", "published"),\n  "title": coalesce(title, "Untitled"),\n  "slug": slug.current,\n  excerpt,\n  coverImage,\n  "date": coalesce(date, _updatedAt),\n  "author": author->{firstName, lastName, picture},\n\n  }\n': AllPostsQueryResult;
     '\n  *[_type == "post" && _id != $skip && defined(slug.current)] | order(date desc, _updatedAt desc) [0...$limit] {\n    \n  _id,\n  "status": select(_originalId in path("drafts.**") => "draft", "published"),\n  "title": coalesce(title, "Untitled"),\n  "slug": slug.current,\n  excerpt,\n  coverImage,\n  "date": coalesce(date, _updatedAt),\n  "author": author->{firstName, lastName, picture},\n\n  }\n': MorePostsQueryResult;
     '\n  *[_type == "post" && slug.current == $slug] [0] {\n    content[]{\n    ...,\n    markDefs[]{\n      ...,\n      \n    link {\n      ...,\n      _type == "link" => {\n        "page": page->slug.current,\n        "post": post->slug.current\n      }\n    }\n\n    }\n  },\n    \n  _id,\n  "status": select(_originalId in path("drafts.**") => "draft", "published"),\n  "title": coalesce(title, "Untitled"),\n  "slug": slug.current,\n  excerpt,\n  coverImage,\n  "date": coalesce(date, _updatedAt),\n  "author": author->{firstName, lastName, picture},\n\n  }\n': PostQueryResult;

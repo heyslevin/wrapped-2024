@@ -29,7 +29,7 @@ export default function SectionContainer({
       <h2
         lang="en"
         className={cn(
-          "w-5/6 hyphens-auto break-words text-7xl font-black uppercase leading-[4rem] tracking-tight motion-delay-2000 md:w-full md:text-8xl md:leading-[6rem]",
+          "w-full hyphens-auto break-words text-6xl font-black uppercase leading-[4rem] tracking-tight motion-delay-2000 md:text-8xl md:leading-[6rem]",
         )}
       >
         {title}
