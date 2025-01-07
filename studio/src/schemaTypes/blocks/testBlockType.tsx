@@ -203,6 +203,131 @@ export default defineType({
         }),
       ],
     }),
+    defineField({
+      name: 'names',
+      type: 'array',
+      of: [
+        defineField({
+          name: 'name',
+          type: 'string',
+        }),
+      ],
+    }),
+    defineField({
+      name: 'testimonials',
+      type: 'array',
+      of: [
+        defineField({
+          name: 'testimonial',
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'person',
+              type: 'string',
+            }),
+            defineField({
+              name: 'company',
+              type: 'string',
+            }),
+            defineField({
+              name: 'text',
+              type: 'text',
+              rows: 3,
+            }),
+            defineField({
+              name: 'logo',
+              type: 'image',
+              fields: [
+                defineField({
+                  name: 'alt',
+                  type: 'string',
+                }),
+              ],
+            }),
+            defineField({
+              name: 'color',
+              title: 'Background Color',
+              type: 'color',
+            }),
+          ],
+        }),
+      ],
+    }),
+    defineField({
+      name: 'footer',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'logo',
+          type: 'image',
+          options: {
+            collapsible: false,
+          },
+          fields: [
+            defineField({
+              name: 'alt',
+              type: 'string',
+            }),
+          ],
+        }),
+        defineField({
+          name: 'text',
+          type: 'text',
+          rows: 4,
+        }),
+        defineField({
+          name: 'contact',
+          type: 'string',
+          validation: (Rule) => Rule.email(),
+        }),
+        defineField({
+          name: 'contactLinks',
+          type: 'object',
+          options: {
+            collapsible: false,
+          },
+          fields: [
+            defineField({
+              name: 'email',
+              type: 'string',
+              validation: (Rule) => Rule.email(),
+            }),
+            defineField({
+              name: 'website',
+              type: 'object',
+              options: {
+                collapsible: false,
+              },
+              fields: [
+                {name: 'url', type: 'url'},
+                {name: 'title', title: 'Link Title', type: 'string'},
+              ],
+            }),
+            defineField({
+              name: 'socials',
+              type: 'array',
+              of: [
+                defineField({
+                  name: 'account',
+                  type: 'object',
+                  fields: [
+                    defineField({
+                      name: 'company',
+                      title: 'Social Media Company',
+                      type: 'string',
+                    }),
+                    defineField({
+                      name: 'url',
+                      type: 'url',
+                    }),
+                  ],
+                }),
+              ],
+            }),
+          ],
+        }),
+      ],
+    }),
   ],
   icon: () => <Blocks size={16} />,
 })

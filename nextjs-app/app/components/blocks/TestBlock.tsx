@@ -18,15 +18,21 @@ import { FadeCarousel } from "../FadeCarousel";
 import Autoplay from "embla-carousel-autoplay";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
 import HoverTabs from "../HoverTabs";
+import { Button } from "../ui/button";
+import Link from "next/link";
 
 export default function TestBlock({ block }: any) {
-  console.log({ blockData: block.tools });
+  console.log({ blockData: block.footer.contactLinks.socials });
   const image = block.logo;
   const gallery = block.gallery;
   const tabs = block.tabs;
   const metrics = block.metrics;
   const iniciatives = block.iniciatives;
   const tools = block.tools;
+  const names = block.names;
+  const testimonials = block.testimonials;
+  const footer = block.footer;
+  const blackLogo = block.footer.logo;
 
   // First, define the possible color keys
   type ColorKey = "blue" | "red" | "green" | "black";
@@ -68,7 +74,7 @@ export default function TestBlock({ block }: any) {
       {/* Overflow hides background pattern */}
       <BlockContainer
         size="lg"
-        className="relative overflow-hidden bg-[#1868FF] py-2 md:py-10"
+        className="relative overflow-hidden bg-[#1868FF] px-0 py-2 md:px-0 md:py-10"
       >
         {/* Background */}
 
@@ -98,24 +104,24 @@ export default function TestBlock({ block }: any) {
                 </h1>
               </div>
               <nav className="text-xl md:text-2xl">
-                <a href="" className="group">
+                <Link href="" className="group">
                   <div className="flex items-center justify-between border-y px-5 py-2 motion-translate-y-in-25 motion-blur-in-md motion-opacity-in-0 motion-delay-[700ms]">
                     <p className="">The Stats</p>
                     <ArrowRight className="group-hover:motion-preset-wobble-md" />
                   </div>
-                </a>
-                <a href="" className="group">
+                </Link>
+                <Link href="" className="group">
                   <div className="flex items-center justify-between border-b px-5 py-2 motion-translate-y-in-25 motion-blur-in-md motion-opacity-in-0 motion-delay-[900ms]">
                     <p className="">Iniciatives</p>
                     <ArrowRight className="group-hover:motion-preset-wobble-md" />
                   </div>
-                </a>
-                <a href="" className="group">
+                </Link>
+                <Link href="" className="group">
                   <div className="flex items-center justify-between px-5 py-2 motion-translate-y-in-25 motion-blur-in-md motion-opacity-in-0 motion-delay-[1100ms]">
                     <p className="">Tools</p>
                     <ArrowRight className="group-hover:motion-preset-wobble-md" />
                   </div>
-                </a>
+                </Link>
               </nav>
             </section>
 
@@ -395,7 +401,7 @@ export default function TestBlock({ block }: any) {
               >
                 {/* Left Side */}
                 <div className="mb-8 flex w-full flex-col justify-start gap-6 md:mb-0 md:w-1/2">
-                  <h4 className="text-xl tracking-tight md:text-5xl">
+                  <h4 className="text-xl tracking-tight md:text-3xl">
                     {toolGroup.title}
                   </h4>
                   <p className="text-balance text-sm md:w-10/12 md:text-lg">
@@ -406,7 +412,6 @@ export default function TestBlock({ block }: any) {
                 <div className="grid w-full grid-cols-[repeat(auto-fit,80px)] justify-start gap-4 md:w-1/2 md:grid-cols-[repeat(auto-fit,100px)] md:justify-end">
                   {toolGroup.apps.map((app: any) => {
                     const image = app.icon;
-                    console.log({ apps: app, image: image });
 
                     return (
                       <div key={app._key} className="flex flex-col gap-2">
@@ -436,11 +441,141 @@ export default function TestBlock({ block }: any) {
           })}
         </article>
       </BlockContainer>
-      <SectionContainer />
-      {/* Remove padding bottom when finished */}
-      <BlockContainer className="pb-24">
-        <div className="">
-          <p className="">Special thanks</p>
+      <SectionContainer
+        title="special thanks"
+        paragraph="They’re actively changing how we work, live, and interact. Together, we strive to co-create the world we want to live in. "
+      />
+
+      {/* Special Thanks */}
+      <BlockContainer className="4">
+        <div className="grid-rows-[repeat(auto-fit,1fr] grid grid-cols-2 gap-6 gap-y-1 md:grid-cols-4 md:grid-rows-4">
+          {names.map((person: any, index: any) => {
+            return (
+              <p key={index} className="text-base md:text-xl">
+                {person}
+              </p>
+            );
+          })}
+        </div>
+      </BlockContainer>
+
+      <BlockContainer>
+        <section className="w-full">
+          <Carousel className="flex flex-col gap-3">
+            <CarouselContent>
+              {testimonials.map((testimonial: any) => {
+                const image = testimonial.logo;
+                const color = testimonial.color?.hex;
+
+                return (
+                  <CarouselItem key={testimonial._key}>
+                    <div
+                      className={cn(
+                        "relative grid h-64 place-content-start rounded-lg bg-[#000000] p-6 pt-10 text-white md:h-[640px] md:place-content-center md:px-28",
+                      )}
+                      style={{ backgroundColor: color }}
+                    >
+                      <p className="text-balance text-center text-xl md:text-5xl">
+                        {testimonial.text}
+                      </p>
+                      <figcaption className="absolute bottom-0 left-0 m-4 flex gap-2 md:m-8 md:gap-4">
+                        <div className="aspect-square w-14 rounded-md bg-white p-2 md:w-24">
+                          <Image
+                            className="rounded-md"
+                            src={urlForImage(image)?.url() as string}
+                            width={300}
+                            height={300}
+                            alt={image.alt || ""}
+                            placeholder="blur"
+                            blurDataURL={image.fullAsset.metadata.lqip || ""}
+                          />
+                        </div>
+                        <div className="flex flex-col justify-center">
+                          <p className="-mb-1 text-sm md:text-base">
+                            {testimonial.person}
+                          </p>
+                          <p className="text-sm opacity-60 md:text-base">
+                            {testimonial.company}
+                          </p>
+                        </div>
+                      </figcaption>
+                    </div>
+                  </CarouselItem>
+                );
+              })}
+            </CarouselContent>
+            <nav className="flex justify-end gap-3">
+              <CarouselPrevious className="relative left-0 right-0 transform-none" />
+              <CarouselNext className="relative left-0 top-0 transform-none" />
+            </nav>
+          </Carousel>
+        </section>
+      </BlockContainer>
+
+      {/* Closing block */}
+
+      <BlockContainer className="">
+        <div className="flex w-full flex-col justify-start gap-5">
+          <h2 className="text-2xl tracking-tight md:text-5xl">
+            Interested in working together? <br /> We'd love to hear from you.
+          </h2>
+          <Button
+            asChild
+            className="w-32 bg-stone-300 text-black hover:text-white"
+          >
+            <Link href="mailto:info@firmalt.com">Work with us</Link>
+          </Button>
+        </div>
+      </BlockContainer>
+
+      {/* Footer */}
+      <BlockContainer>
+        <div className="flex w-full flex-col gap-4 border-t border-black pt-8">
+          <figure className="w-full pb-14">
+            <Image
+              className="fill-black object-fill"
+              src={urlForImage(blackLogo)?.url() as string}
+              width={3000}
+              height={1500}
+              alt={blackLogo.alt || ""}
+            />
+          </figure>
+          <section className="flex flex-col gap-12 md:flex-row md:justify-between md:gap-0">
+            <div className="flex w-full flex-col gap-5 md:w-2/5">
+              <p className="text-stone-800">{footer.text}</p>
+              <Link
+                href={`mailto:${footer.contact}`}
+                className="underline underline-offset-4"
+              >
+                <p className="">Contact us</p>
+              </Link>
+            </div>
+            {/* Right Side */}
+            <div className="flex w-full gap-12 text-sm font-medium uppercase md:w-2/5 md:justify-end md:gap-5">
+              <div className="flex flex-col gap-1">
+                <p className="">MAIL</p>
+                <p className="">WEB</p>
+                <p className="">SOCIALS</p>
+              </div>
+              <div className="flex flex-col gap-1">
+                <Link className="" href={footer.contactLinks.email}>
+                  {footer.contactLinks.email}
+                </Link>
+                <Link className="" href={footer.contactLinks.website.url}>
+                  {footer.contactLinks.website.title}
+                </Link>
+                <div className="flex flex-col gap-0">
+                  {footer.contactLinks.socials.map((social: any) => {
+                    return (
+                      <Link key={social._key} className="" href={social.url}>
+                        {social.company}
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
       </BlockContainer>
     </main>

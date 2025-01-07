@@ -13,6 +13,7 @@ import {
 import {assist} from '@sanity/assist'
 import {SINGLETONS} from '@/lib/constants'
 import {media} from 'sanity-plugin-media'
+import {colorInput} from '@sanity/color-input'
 
 const projectId = process.env.SANITY_STUDIO_PROJECT_ID || 'tits'
 const dataset = process.env.SANITY_STUDIO_DATASET || 'production'
@@ -120,6 +121,7 @@ export default defineConfig({
     unsplashImageAsset(),
     visionTool(),
     media(),
+    colorInput(),
   ],
 
   schema: {

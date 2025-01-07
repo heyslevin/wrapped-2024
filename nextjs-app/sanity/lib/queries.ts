@@ -78,9 +78,23 @@ const PAGE_BUILDER_CONTENT_QUERY = /* groq */ `
           "fullAsset": asset->
         }
       },
-            iniciatives[] {
+      iniciatives[] {
         ...,
         image {
+          ...,
+          "fullAsset": asset->
+        }
+      },
+      testimonials[] {
+        ...,
+        logo {
+          ...,
+          "fullAsset": asset->
+        }
+      },
+            footer {
+        ...,
+        logo {
           ...,
           "fullAsset": asset->
         }
