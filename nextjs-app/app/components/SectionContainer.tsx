@@ -7,6 +7,7 @@ interface SectionContainerProps {
   className?: string;
   title?: string;
   paragraph?: string;
+  id?: string;
 }
 
 export default function SectionContainer({
@@ -14,9 +15,11 @@ export default function SectionContainer({
   className,
   title,
   paragraph,
+  id,
 }: SectionContainerProps) {
   return (
     <BlockContainer
+      id={id}
       lang="en"
       className={cn(
         "flex-col gap-10 px-8 py-0 text-center md:py-12",

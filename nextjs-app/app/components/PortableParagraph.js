@@ -4,7 +4,7 @@ import { Image } from "next-sanity/image";
 export const PortableParagraph = {
   block: {
     h1: ({ children }) => (
-      <h1 className="my-4 text-4xl leading-none tracking-tight md:text-6xl">
+      <h1 className="my-4 text-4xl font-medium leading-none tracking-tight md:text-6xl">
         {children}
       </h1>
     ),

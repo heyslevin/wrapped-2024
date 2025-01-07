@@ -104,19 +104,19 @@ export default function TestBlock({ block }: any) {
                 </h1>
               </div>
               <nav className="text-xl md:text-2xl">
-                <Link href="" className="group">
+                <Link href="#stats" className="group">
                   <div className="flex items-center justify-between border-y px-5 py-2 motion-translate-y-in-25 motion-blur-in-md motion-opacity-in-0 motion-delay-[700ms]">
                     <p className="">The Stats</p>
                     <ArrowRight className="group-hover:motion-preset-wobble-md" />
                   </div>
                 </Link>
-                <Link href="" className="group">
+                <Link href="#initiatives" className="group">
                   <div className="flex items-center justify-between border-b px-5 py-2 motion-translate-y-in-25 motion-blur-in-md motion-opacity-in-0 motion-delay-[900ms]">
-                    <p className="">Iniciatives</p>
+                    <p className="">Initiatives</p>
                     <ArrowRight className="group-hover:motion-preset-wobble-md" />
                   </div>
                 </Link>
-                <Link href="" className="group">
+                <Link href="#tools" className="group">
                   <div className="flex items-center justify-between px-5 py-2 motion-translate-y-in-25 motion-blur-in-md motion-opacity-in-0 motion-delay-[1100ms]">
                     <p className="">Tools</p>
                     <ArrowRight className="group-hover:motion-preset-wobble-md" />
@@ -192,6 +192,7 @@ export default function TestBlock({ block }: any) {
 
       <div className="intersect-once flex w-full flex-col items-center justify-center bg-black intersect:motion-opacity-in-0">
         <SectionContainer
+          id="stats"
           className="py-16 text-white md:py-28"
           title="The Stats"
           paragraph="They’re actively changing how we work, live, and interact. Together, we strive to co-create the world we want to live in."
@@ -199,7 +200,7 @@ export default function TestBlock({ block }: any) {
 
         {/* Paragraph Block */}
 
-        <BlockContainer className="w-10/12 py-0 pb-28 text-white md:w-3/4 md:py-10">
+        <BlockContainer className="w-10/12 pb-20 text-white md:mb-20 md:w-3/4">
           <PortableText
             components={PortableParagraph as any}
             value={block.blockContent}
@@ -341,8 +342,9 @@ export default function TestBlock({ block }: any) {
       {/* Iniciatives Section */}
 
       <SectionContainer
+        id="initiatives"
         className=""
-        title="Iniciatives"
+        title="Initiatives"
         paragraph="They’re actively changing how we work, live, and interact. Together, we strive to co-create the world we want to live in."
       />
 
@@ -386,6 +388,7 @@ export default function TestBlock({ block }: any) {
       {/* Tools Section */}
 
       <SectionContainer
+        id="tools"
         className=""
         title="Tools"
         paragraph="They’re actively changing how we work, live, and interact. Together, we strive to co-create the world we want to live in."

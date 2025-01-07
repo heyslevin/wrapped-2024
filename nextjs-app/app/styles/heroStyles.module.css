@@ -39,11 +39,14 @@
 }
 
 @keyframes fade {
-  from {
-    background: #1868ff;
+  0% {
+    background: #0936fb;
   }
-  to {
-    background: #9b29ff;
+  50% {
+    background: #0018b7;
+  }
+  100% {
+    background: #790ada;
   }
 }
 
