@@ -20,15 +20,16 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
 import HoverTabs from "../HoverTabs";
 
 export default function TestBlock({ block }: any) {
-  console.log({ test: block.iniciatives[0].image });
+  console.log({ blockData: block.tools });
   const image = block.logo;
   const gallery = block.gallery;
   const tabs = block.tabs;
   const metrics = block.metrics;
   const iniciatives = block.iniciatives;
+  const tools = block.tools;
 
   // First, define the possible color keys
-  type ColorKey = "blue" | "red" | "green";
+  type ColorKey = "blue" | "red" | "green" | "black";
 
   // Define the structure of the color styles
   type ColorStyle = {
@@ -53,6 +54,10 @@ export default function TestBlock({ block }: any) {
     green: {
       normal: "bg-[#226452]",
       dark: "bg-green-800",
+    },
+    black: {
+      normal: "bg-stone-800",
+      dark: "bg-black",
     },
   };
 
@@ -327,8 +332,10 @@ export default function TestBlock({ block }: any) {
         </div>
       </BlockContainer>
 
+      {/* Iniciatives Section */}
+
       <SectionContainer
-        className="py-16 md:py-28"
+        className=""
         title="Iniciatives"
         paragraph="They’re actively changing how we work, live, and interact. Together, we strive to co-create the world we want to live in."
       />
@@ -368,6 +375,73 @@ export default function TestBlock({ block }: any) {
             </article>
           );
         })}
+      </BlockContainer>
+
+      {/* Tools Section */}
+
+      <SectionContainer
+        className=""
+        title="Tools"
+        paragraph="They’re actively changing how we work, live, and interact. Together, we strive to co-create the world we want to live in."
+      />
+
+      <BlockContainer className="px-4 md:px-10">
+        <article className="flex flex-col">
+          {tools.map((toolGroup: any) => {
+            return (
+              <section
+                key={toolGroup._key}
+                className="mb-14 flex w-full flex-col border-t border-black py-2 md:mb-20 md:flex-row md:py-5"
+              >
+                {/* Left Side */}
+                <div className="mb-8 flex w-full flex-col justify-start gap-6 md:mb-0 md:w-1/2">
+                  <h4 className="text-xl tracking-tight md:text-5xl">
+                    {toolGroup.title}
+                  </h4>
+                  <p className="text-balance text-sm md:w-10/12 md:text-lg">
+                    {toolGroup.description}
+                  </p>
+                </div>
+                {/* Right Side */}
+                <div className="grid w-full grid-cols-[repeat(auto-fit,80px)] justify-start gap-4 md:w-1/2 md:grid-cols-[repeat(auto-fit,100px)] md:justify-end">
+                  {toolGroup.apps.map((app: any) => {
+                    const image = app.icon;
+                    console.log({ apps: app, image: image });
+
+                    return (
+                      <div key={app._key} className="flex flex-col gap-2">
+                        <div className="h-20 rounded-lg bg-white p-4 md:h-[100px]">
+                          <Image
+                            className="h-full rounded-lg object-cover"
+                            src={urlForImage(image)?.url() as string}
+                            alt={image?.alt || ""}
+                            width={1000}
+                            height={1000}
+                          />
+                        </div>
+                        <div className="">
+                          <p className="-mb-1 text-sm font-medium">
+                            {app.name}
+                          </p>
+                          <p className="text-sm font-medium text-stone-400">
+                            {app.category}
+                          </p>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </section>
+            );
+          })}
+        </article>
+      </BlockContainer>
+      <SectionContainer />
+      {/* Remove padding bottom when finished */}
+      <BlockContainer className="pb-24">
+        <div className="">
+          <p className="">Special thanks</p>
+        </div>
       </BlockContainer>
     </main>
   );

@@ -134,6 +134,7 @@ export default defineType({
                   {title: 'blue', value: 'blue'},
                   {title: 'red', value: 'red'},
                   {title: 'green', value: 'green'},
+                  {title: 'black', value: 'black'},
                 ],
               },
             }),
@@ -144,6 +145,57 @@ export default defineType({
                 defineField({
                   name: 'alt',
                   type: 'string',
+                }),
+              ],
+            }),
+          ],
+        }),
+      ],
+    }),
+    defineField({
+      name: 'tools',
+      type: 'array',
+      of: [
+        defineField({
+          name: 'toolGroup',
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'title',
+              type: 'string',
+            }),
+            defineField({
+              name: 'description',
+              type: 'text',
+              rows: 3,
+            }),
+            defineField({
+              name: 'apps',
+              type: 'array',
+              of: [
+                defineField({
+                  name: 'app',
+                  type: 'object',
+                  fields: [
+                    defineField({
+                      name: 'name',
+                      type: 'string',
+                    }),
+                    defineField({
+                      name: 'category',
+                      type: 'string',
+                    }),
+                    defineField({
+                      name: 'icon',
+                      type: 'image',
+                      fields: [
+                        defineField({
+                          name: 'alt',
+                          type: 'string',
+                        }),
+                      ],
+                    }),
+                  ],
                 }),
               ],
             }),
