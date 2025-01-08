@@ -19,6 +19,7 @@ import formType from './blocks/formType'
 import metricsType from './blocks/metricsType'
 import accordionType from './blocks/accordionType'
 import testBlock from './blocks/testBlockType'
+import projects from './objects/projects'
 
 export const schemaTypes = [
   // Singletons
@@ -35,6 +36,7 @@ export const schemaTypes = [
   callToAction,
   link,
   navLink,
+  projects,
   // Blocks
   formType,
   galleryType,

@@ -22,14 +22,14 @@ export default function SectionContainer({
       id={id}
       lang="en"
       className={cn(
-        "flex-col gap-10 px-8 py-0 text-center md:py-12",
+        "flex-col gap-10 px-8 py-10 text-center md:py-12",
         className,
       )}
     >
       <h2
         lang="en"
         className={cn(
-          "w-full hyphens-auto break-words text-6xl font-black uppercase leading-[4rem] tracking-tight motion-delay-2000 md:text-8xl md:leading-[6rem]",
+          "w-full hyphens-auto break-words text-5xl font-black uppercase leading-[4rem] tracking-tight motion-delay-2000 md:text-8xl md:leading-[6rem]",
         )}
       >
         {title}

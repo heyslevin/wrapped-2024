@@ -78,7 +78,7 @@ export default function TestBlock({ block }: any) {
       >
         {/* Background */}
 
-        <div className="absolute top-0 h-screen w-full">
+        <div className="absolute top-0 h-lvh w-full md:h-screen">
           <div className={`${styles.row} ${styles["row-1"]} `}></div>
           <div className={`${styles.row} ${styles["row-2"]} `}></div>
           <div className={`${styles.row} ${styles["row-3"]} `}></div>
@@ -200,7 +200,7 @@ export default function TestBlock({ block }: any) {
 
         {/* Paragraph Block */}
 
-        <BlockContainer className="w-10/12 pb-20 text-white md:mb-20 md:w-3/4">
+        <BlockContainer className="w-10/12 py-2 pb-16 text-white md:mb-20 md:w-3/4">
           <PortableText
             components={PortableParagraph as any}
             value={block.blockContent}
@@ -211,8 +211,8 @@ export default function TestBlock({ block }: any) {
       {/* Portfolio Block */}
 
       <BlockContainer className="md:px-10">
-        <div className="flex w-full flex-col items-start justify-start gap-5 rounded-lg bg-white p-4 md:flex-row md:items-stretch">
-          <section className="mb-6 flex w-full flex-col items-center px-5 text-2xl leading-tight tracking-tighter md:mb-0 md:w-1/2 md:items-start md:px-0 md:text-3xl">
+        <div className="flex w-full flex-col items-start justify-start gap-5 rounded-lg bg-white md:flex-row md:items-stretch md:p-4">
+          <section className="mb-6 mt-6 flex w-full flex-col items-center px-5 text-2xl leading-tight tracking-tighter md:mb-0 md:mt-0 md:w-1/2 md:items-start md:px-0 md:text-3xl">
             <h3 className="">Portfolio Projects</h3>
             <h3 className="text-stone-400 md:mb-auto">A lot more to come!</h3>
             <h2 className="text-9xl font-medium md:text-[200px] md:leading-[8rem]">
@@ -248,7 +248,7 @@ export default function TestBlock({ block }: any) {
               </CarouselContent>
             </Carousel>
           </section>
-          <section className="flex md:hidden">
+          <section className="mb-6 flex md:hidden">
             <Carousel
               className="w-full overflow-visible pt-4"
               opts={{ loop: true }}
@@ -303,7 +303,7 @@ export default function TestBlock({ block }: any) {
 
       {/* Metrics Carousel */}
 
-      <BlockContainer className="isolate md:px-10 md:py-10">
+      <BlockContainer className="isolate px-0 md:px-10 md:py-10">
         <div className="w-full">
           <Carousel className="w-full">
             <div className="mb-8 flex w-full items-center justify-between px-4 md:px-0">

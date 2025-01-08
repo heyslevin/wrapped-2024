@@ -85,6 +85,16 @@ const PAGE_BUILDER_CONTENT_QUERY = /* groq */ `
           "fullAsset": asset->
         }
       },
+      portafolio {
+        ...,
+        gallery[] {
+          ...,
+            image {
+            ...,
+            "fullAsset": asset->
+          }
+        }
+      },
       testimonials[] {
         ...,
         logo {

@@ -254,6 +254,22 @@ export default defineType({
       ],
     }),
     defineField({
+      name: 'portafolio',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'gallery',
+          type: 'array',
+          of: [
+            defineField({
+              name: 'projects',
+              type: 'projects',
+            }),
+          ],
+        }),
+      ],
+    }),
+    defineField({
       name: 'footer',
       type: 'object',
       fields: [
