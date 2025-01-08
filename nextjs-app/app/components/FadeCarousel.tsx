@@ -17,7 +17,7 @@ import { Image } from "next-sanity/image";
 import { urlForImage } from "@/sanity/lib/utils";
 
 type FadeCarouselProps = {
-  items: React.ReactNode[];
+  items: any;
   options?: any;
 };
 
@@ -35,12 +35,16 @@ export function FadeCarousel({ items, options }: FadeCarouselProps) {
       className=""
     >
       <CarouselContent>
-        {items.map((image: any) => {
+        {items.map((item: any) => {
+          const image = item.image;
           return (
-            <CarouselItem key={image._key} className="">
+            <CarouselItem key={item._key} className="">
               <div className="overflow-hidden rounded-lg">
-                <div className="absolute bottom-4 left-6 rounded-full bg-white/30 text-black backdrop-blur-md">
-                  <p className="p-2 px-4 text-xs md:text-sm">{image.alt}</p>
+                <div className="absolute bottom-0 mb-2 ml-2 flex flex-row rounded-full bg-white/50 p-2 px-3 text-black backdrop-blur-md">
+                  <p className="text-sm">{item.client}&nbsp;</p>
+                  <p className="whitespace-nowrap text-sm text-stone-600">
+                    · {item.industry}
+                  </p>
                 </div>
                 <Image
                   className="object-cover"
@@ -48,6 +52,8 @@ export function FadeCarousel({ items, options }: FadeCarouselProps) {
                   alt={image.alt}
                   width={2000}
                   height={2000}
+                  placeholder="blur"
+                  blurDataURL={image.fullAsset.metadata.lqip}
                 />
               </div>
             </CarouselItem>

@@ -66,11 +66,20 @@ const PAGE_BUILDER_CONTENT_QUERY = /* groq */ `
           ...,
           "image": {
             ...,
+            "fullAsset": asset->,
             "imageUrl": asset->.url,
             "blurDataUrl": asset->.metadata.lqip,
           }
         }
       },
+      gallery[] {
+          ...,
+          "image": {
+            ...,
+            "fullAsset": asset->,
+          }
+        },
+
       tabs[] {
         ...,
         image {
@@ -94,6 +103,18 @@ const PAGE_BUILDER_CONTENT_QUERY = /* groq */ `
             "fullAsset": asset->
           }
         }
+      },
+      tools[] {
+        ...,
+          apps[] {
+                ...,
+                icon {
+                  ...,
+                  "fullAsset": asset->      
+            
+                }
+          }
+        
       },
       testimonials[] {
         ...,

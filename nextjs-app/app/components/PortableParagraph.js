@@ -4,7 +4,7 @@ import { Image } from "next-sanity/image";
 export const PortableParagraph = {
   block: {
     h1: ({ children }) => (
-      <h1 className="my-4 text-4xl font-medium leading-none tracking-tight md:text-6xl">
+      <h1 className="my-4 text-4xl font-medium leading-[3rem] tracking-tight md:text-6xl">
         {children}
       </h1>
     ),
@@ -66,13 +66,13 @@ export const PortableParagraph = {
         return null;
       }
       return (
-        <div className="inline-block w-14">
+        <div className="relative top-1 inline-block w-10 md:top-2 md:w-14">
           <Image
             src={urlForImage(value)?.url() || ""}
             alt={value.alt || ""}
             className="rounded-lg"
             width={800}
-            height={600}
+            height={800}
           />
         </div>
       );

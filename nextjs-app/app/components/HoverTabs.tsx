@@ -8,105 +8,70 @@ import { cn } from "@/lib/utils";
 
 export default function HoverTabs({ tabs }: any) {
   const [activeTab, setActiveTab] = React.useState(tabs[0].industry);
-  const [hiddenImage, setHiddenImage] = React.useState(true);
-  const [isOffDom, setOffDom] = React.useState(true);
-  const [isHovering, setIsHovering] = React.useState(false);
+  const [hiddenImage, setHiddenImage] = React.useState(true); // Controls fade-out
+  const [isVisible, setIsVisible] = React.useState(false); // Controls DOM presence
+  const timeoutRef = React.useRef<number | null>(null);
 
-  // Handle image hiding and removal from DOM
+  function handleClick(industry: any) {
+    if (timeoutRef.current) {
+      window.clearTimeout(timeoutRef.current); // Clear any ongoing timeout
+    }
+
+    setActiveTab(industry);
+    setIsVisible(true); // Ensure the image is in the DOM
+    setHiddenImage(false); // Start fade-in
+
+    // Start fade-out after 3 seconds
+    timeoutRef.current = window.setTimeout(() => {
+      setHiddenImage(true); // Trigger fade-out
+      setTimeout(() => setIsVisible(false), 300); // Remove from DOM after fade-out
+    }, 3000);
+  }
+
   React.useEffect(() => {
-    let hideTimeout: NodeJS.Timeout;
-    let offDomTimeout: NodeJS.Timeout;
-
-    if (isHovering) {
-      setHiddenImage(false);
-      setOffDom(false);
-    } else {
-      hideTimeout = setTimeout(() => {
-        setHiddenImage(true);
-        console.log("image hidden");
-      }, 1400);
-    }
-
-    if (hiddenImage && !isHovering) {
-      offDomTimeout = setTimeout(() => {
-        console.log("offDom");
-        setOffDom(true);
-      }, 100);
-    }
-
+    // Cleanup timeout on unmount
     return () => {
-      clearTimeout(hideTimeout);
-      clearTimeout(offDomTimeout);
+      if (timeoutRef.current) {
+        window.clearTimeout(timeoutRef.current);
+      }
     };
-  }, [isHovering, hiddenImage]);
+  }, []);
 
-  // Automatically start hide animation after a delay on mobile
-  React.useEffect(() => {
-    const isMobile = window.matchMedia("(max-width: 768px)").matches;
-    if (isMobile && !hiddenImage) {
-      const mobileTimeout = setTimeout(() => {
-        setIsHovering(false);
-      }, 1500); // Auto-hide after 3 seconds on mobile
-
-      return () => clearTimeout(mobileTimeout);
-    }
-  }, [hiddenImage]);
-
-  function handleHover(industry: any) {
-    setIsHovering(true);
-    setActiveTab(industry);
-  }
-
-  function handleMouseLeave() {
-    setIsHovering(false);
-  }
-
-  function handleTouch(industry: any) {
-    setIsHovering(true);
-    setActiveTab(industry);
-  }
   return (
     <Tabs
       value={activeTab}
       className="flex w-full flex-row items-stretch md:gap-6"
     >
       <section className="w-full md:w-1/2">
-        <TabsList
-          onMouseLeave={handleMouseLeave}
-          className="flex flex-col border-t border-slate-300"
-        >
-          {tabs.map((tab: any) => {
-            return (
-              <TabsTrigger
-                key={tab._key}
-                value={tab.industry}
-                className="flex items-center border-b border-slate-300 py-1 md:py-3"
-                onMouseEnter={() => handleHover(tab.industry)}
-                onClick={() => handleTouch(tab.industry)}
-                onTouchStart={() => handleTouch(tab.industry)}
-              >
-                <h3 className="text-xl group-data-[state=inactive]:text-stone-500 md:text-xl">
-                  {tab.industry}
-                </h3>
-                <div className="w-20 rounded-lg border border-slate-400 p-2 group-data-[state=active]:border-[#0000FF] group-data-[state=active]:bg-[#CFFFFF]">
-                  <p className="text-lg group-data-[state=active]:text-[#0000FF] group-data-[state=inactive]:text-slate-500 md:text-xl">
-                    {tab.percentage}%
-                  </p>
-                </div>
-              </TabsTrigger>
-            );
-          })}
+        <TabsList className="flex flex-col border-t border-slate-300">
+          {tabs.map((tab: any) => (
+            <TabsTrigger
+              key={tab._key}
+              value={tab.industry}
+              className="flex items-center border-b border-slate-300 py-1 md:py-3"
+              onClick={() => handleClick(tab.industry)}
+            >
+              <h3 className="text-xl group-data-[state=inactive]:text-stone-500 md:text-xl">
+                {tab.industry}
+              </h3>
+              <div className="w-20 rounded-lg border border-slate-400 p-2 group-data-[state=active]:border-[#0000FF] group-data-[state=active]:bg-[#CFFFFF]">
+                <p className="text-lg group-data-[state=active]:text-[#0000FF] group-data-[state=inactive]:text-slate-500 md:text-xl">
+                  {tab.percentage}%
+                </p>
+              </div>
+            </TabsTrigger>
+          ))}
         </TabsList>
       </section>
       <section className="w-0 items-center md:static md:flex md:w-1/2">
         {tabs.map((tab: any) => {
-          //Check the lqip reference doesn't break when leaving test
           const imageAsset = tab.image;
           const lqip = tab.image.fullAsset.metadata.lqip;
+
           return (
             <TabsContent key={tab._key} value={tab.industry}>
               <div className="flex md:hidden">
-                {!isOffDom && (
+                {isVisible && ( // Only render Image if visible
                   <Image
                     src={urlForImage(imageAsset)?.url() as string}
                     height={500}
@@ -115,11 +80,8 @@ export default function HoverTabs({ tabs }: any) {
                     placeholder="blur"
                     blurDataURL={lqip || ""}
                     className={cn(
-                      "hover:opacity-100",
-                      hiddenImage
-                        ? "fixed bottom-0 right-0 m-auto mb-4 mr-4 w-1/2 rounded-lg motion-opacity-out-0"
-                        : "motion-preset-fade-lg fixed bottom-0 right-0 m-auto mb-4 mr-4 w-1/2 rounded-lg opacity-100",
-                      isOffDom ? "invisible" : "visible",
+                      "fixed bottom-0 right-0 m-auto mb-4 mr-4 w-1/2 rounded-lg transition-opacity duration-300",
+                      hiddenImage ? "opacity-0" : "opacity-100",
                     )}
                   />
                 )}

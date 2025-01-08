@@ -1,4 +1,4 @@
-import { animateIn, urlForImage } from "@/sanity/lib/utils";
+import { animateIn, splitGalleryData, urlForImage } from "@/sanity/lib/utils";
 import styles from "../../styles/heroStyles.module.css";
 import { Image } from "next-sanity/image";
 import { ArrowRight } from "lucide-react";
@@ -22,7 +22,7 @@ import { Button } from "../ui/button";
 import Link from "next/link";
 
 export default function TestBlock({ block }: any) {
-  console.log({ blockData: block.footer.contactLinks.socials });
+  console.log({ blockData: block.gallery });
   const image = block.logo;
   const gallery = block.gallery;
   const tabs = block.tabs;
@@ -33,6 +33,14 @@ export default function TestBlock({ block }: any) {
   const testimonials = block.testimonials;
   const footer = block.footer;
   const blackLogo = block.footer.logo;
+  const portafolio = block.portafolio;
+
+  const [gallery1, gallery2, gallery3, gallery4] = splitGalleryData(
+    block.portafolio.gallery,
+    4,
+  );
+
+  const [gallery5, gallery6] = splitGalleryData(block.portafolio.gallery, 2);
 
   // First, define the possible color keys
   type ColorKey = "blue" | "red" | "green" | "black";
@@ -170,15 +178,19 @@ export default function TestBlock({ block }: any) {
       <BlockContainer className="p-4">
         <Carousel className="w-full">
           <CarouselContent className="">
-            {gallery.map((image: any) => {
+            {gallery.map((item: any) => {
+              const image = item.image;
+              console.log(image.fullAsset.metadata.lqip);
               return (
-                <CarouselItem key={image._key} className="">
+                <CarouselItem key={item._key} className="">
                   <div className="max-h-[800px] overflow-hidden rounded-lg">
                     <Image
                       src={urlForImage(image)?.url() as string}
                       alt={image.alt}
                       width={2000}
                       height={1500}
+                      placeholder="blur"
+                      blurDataURL={image.fullAsset.metadata.lqip}
                     />
                   </div>
                 </CarouselItem>
@@ -210,6 +222,10 @@ export default function TestBlock({ block }: any) {
 
       {/* Portfolio Block */}
 
+      {/* Todo:
+- Split gallery into 4 or 2 parts
+- Feed into the ui */}
+
       <BlockContainer className="md:px-10">
         <div className="flex w-full flex-col items-start justify-start gap-5 rounded-lg bg-white md:flex-row md:items-stretch md:p-4">
           <section className="mb-6 mt-6 flex w-full flex-col items-center px-5 text-2xl leading-tight tracking-tighter md:mb-0 md:mt-0 md:w-1/2 md:items-start md:px-0 md:text-3xl">
@@ -225,14 +241,15 @@ export default function TestBlock({ block }: any) {
           <section className="flex md:hidden">
             <Carousel className="w-full overflow-visible" opts={{ loop: true }}>
               <CarouselContent className="overflow-visible">
-                {gallery.map((image: any) => {
+                {gallery5.map((project: any) => {
+                  const image = project.image;
                   return (
-                    <CarouselItem key={image._key} className="basis-1/2">
+                    <CarouselItem key={project._key} className="basis-1/2">
                       <div className="aspect-square overflow-hidden rounded-lg">
                         <figcaption className="absolute bottom-0 mb-2 ml-2 flex flex-row rounded-full bg-white/30 p-2 px-3 text-black backdrop-blur-md">
-                          <p className="text-xs">{image.alt}&nbsp;</p>
+                          <p className="text-xs">{project.client}&nbsp;</p>
                           <p className="whitespace-nowrap text-xs text-stone-500">
-                            · Education
+                            · {project.industry}
                           </p>
                         </figcaption>
                         <Image
@@ -240,6 +257,8 @@ export default function TestBlock({ block }: any) {
                           alt={image.alt}
                           width={2000}
                           height={2000}
+                          placeholder="blur"
+                          blurDataURL={image.fullAsset.metadata.lqip}
                         />
                       </div>
                     </CarouselItem>
@@ -250,19 +269,20 @@ export default function TestBlock({ block }: any) {
           </section>
           <section className="mb-6 flex md:hidden">
             <Carousel
-              className="w-full overflow-visible pt-4"
+              className="w-full overflow-visible"
               opts={{ loop: true }}
               delay={6500}
             >
               <CarouselContent className="overflow-visible">
-                {gallery.map((image: any) => {
+                {gallery6.map((project: any) => {
+                  const image = project.image;
                   return (
-                    <CarouselItem key={image._key} className="basis-1/2">
+                    <CarouselItem key={project._key} className="basis-1/2">
                       <div className="aspect-square overflow-hidden rounded-lg">
                         <figcaption className="absolute bottom-0 mb-2 ml-2 flex flex-row rounded-full bg-white/30 p-2 px-3 text-black backdrop-blur-md">
-                          <p className="text-xs">{image.alt}&nbsp;</p>
+                          <p className="text-xs">{project.client}&nbsp;</p>
                           <p className="whitespace-nowrap text-xs text-stone-500">
-                            · Education
+                            · {project.industry}
                           </p>
                         </figcaption>
                         <Image
@@ -270,6 +290,8 @@ export default function TestBlock({ block }: any) {
                           alt={image.alt}
                           width={2000}
                           height={2000}
+                          placeholder="blur"
+                          blurDataURL={image.fullAsset.metadata.lqip}
                         />
                       </div>
                     </CarouselItem>
@@ -282,10 +304,10 @@ export default function TestBlock({ block }: any) {
           {/* Desktop Gallery */}
 
           <section className="hidden grid-cols-2 gap-4 md:grid md:w-1/2">
-            <FadeCarousel items={gallery} options={{ delay: 4200 }} />
-            <FadeCarousel items={gallery} options={{ delay: 9500 }} />
-            <FadeCarousel items={gallery} options={{ delay: 6200 }} />
-            <FadeCarousel items={gallery} options={{ delay: 5600 }} />
+            <FadeCarousel items={gallery1} options={{ delay: 4200 }} />
+            <FadeCarousel items={gallery2} options={{ delay: 9500 }} />
+            <FadeCarousel items={gallery3} options={{ delay: 6200 }} />
+            <FadeCarousel items={gallery4} options={{ delay: 5600 }} />
           </section>
         </div>
       </BlockContainer>
@@ -378,6 +400,8 @@ export default function TestBlock({ block }: any) {
                   alt={image?.alt || ""}
                   width={3000}
                   height={3000}
+                  placeholder="blur"
+                  blurDataURL={image.fullAsset.metadata.lqip}
                 />
               </section>
             </article>
@@ -425,6 +449,8 @@ export default function TestBlock({ block }: any) {
                             alt={image?.alt || ""}
                             width={1000}
                             height={1000}
+                            placeholder="blur"
+                            blurDataURL={image.fullAsset.metadata.lqip}
                           />
                         </div>
                         <div className="">

@@ -7,6 +7,22 @@ const imageBuilder = createImageUrlBuilder({
   dataset: dataset || "",
 });
 
+type Project = {
+  id: number; // Unique identifier for the project
+  name: string; // Name of the project
+  // Add more fields as necessary
+};
+
+export function splitGalleryData(projects: Project[], numGalleries: 2 | 4) {
+  const chunks: Project[][] = Array.from({ length: numGalleries }, () => []);
+
+  projects.forEach((project, index) => {
+    const galleryIndex = index % numGalleries;
+    chunks[galleryIndex].push(project);
+  });
+
+  return chunks;
+}
 export const animateIn =
   "intersect-full intersect:motion-blur-in-md intersect:motion-translate-y-in-25 intersect:motion-opacity-in-0 fill-both";
 
