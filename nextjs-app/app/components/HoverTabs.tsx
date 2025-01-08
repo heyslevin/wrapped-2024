@@ -70,34 +70,38 @@ export default function HoverTabs({ tabs }: any) {
 
           return (
             <TabsContent key={tab._key} value={tab.industry}>
-              <div className="flex md:hidden">
-                {isVisible && ( // Only render Image if visible
-                  <Image
-                    src={urlForImage(imageAsset)?.url() as string}
-                    height={500}
-                    width={500}
-                    alt={imageAsset.alt || ""}
-                    placeholder="blur"
-                    blurDataURL={lqip || ""}
-                    className={cn(
-                      "fixed bottom-0 right-0 m-auto mb-4 mr-4 w-1/2 rounded-lg transition-opacity duration-300",
-                      hiddenImage ? "opacity-0" : "opacity-100",
-                    )}
-                  />
-                )}
-              </div>
+              {imageAsset.asset._ref && (
+                <div className="flex md:hidden">
+                  {isVisible && ( // Only render Image if visible
+                    <Image
+                      src={urlForImage(imageAsset)?.url() as string}
+                      height={500}
+                      width={500}
+                      alt={imageAsset.alt || ""}
+                      placeholder="blur"
+                      blurDataURL={lqip || ""}
+                      className={cn(
+                        "fixed bottom-0 right-0 m-auto mb-4 mr-4 w-1/2 rounded-lg transition-opacity duration-300",
+                        hiddenImage ? "opacity-0" : "opacity-100",
+                      )}
+                    />
+                  )}
+                </div>
+              )}
 
               {/* Desktop Image */}
               <div className="hidden md:flex">
-                <Image
-                  className="rounded-lg"
-                  src={urlForImage(imageAsset)?.url() as string}
-                  height={500}
-                  width={700}
-                  alt={imageAsset.alt || ""}
-                  placeholder="blur"
-                  blurDataURL={lqip || ""}
-                />
+                {imageAsset.asset._ref && (
+                  <Image
+                    className="rounded-lg"
+                    src={urlForImage(imageAsset)?.url() as string}
+                    height={500}
+                    width={700}
+                    alt={imageAsset.alt || ""}
+                    placeholder="blur"
+                    blurDataURL={lqip || ""}
+                  />
+                )}
               </div>
             </TabsContent>
           );
