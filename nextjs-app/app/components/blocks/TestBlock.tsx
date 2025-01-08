@@ -22,7 +22,7 @@ import { Button } from "../ui/button";
 import Link from "next/link";
 
 export default function TestBlock({ block }: any) {
-  console.log({ blockData: block.gallery });
+  // console.log({ blockData: block.gallery });
   const image = block.logo;
   const gallery = block.gallery;
   const tabs = block.tabs;
@@ -185,7 +185,7 @@ export default function TestBlock({ block }: any) {
 
               return (
                 <CarouselItem key={item._key} className="">
-                  {image.asset._ref && (
+                  {image?.asset?._ref ? (
                     <div className="max-h-[800px] overflow-hidden rounded-lg">
                       <Image
                         src={urlForImage(image)?.url() as string}
@@ -196,7 +196,7 @@ export default function TestBlock({ block }: any) {
                         blurDataURL={image.fullAsset.metadata.lqip}
                       />
                     </div>
-                  )}
+                  ) : null}
                 </CarouselItem>
               );
             })}
@@ -256,7 +256,7 @@ export default function TestBlock({ block }: any) {
                             · {project.industry}
                           </p>
                         </figcaption>
-                        {image.asset._ref && (
+                        {image?.asset?._ref ? (
                           <Image
                             src={urlForImage(image)?.url() as string}
                             alt={image.alt}
@@ -265,7 +265,7 @@ export default function TestBlock({ block }: any) {
                             placeholder="blur"
                             blurDataURL={image.fullAsset.metadata.lqip}
                           />
-                        )}
+                        ) : null}
                       </div>
                     </CarouselItem>
                   );
@@ -291,7 +291,7 @@ export default function TestBlock({ block }: any) {
                             · {project.industry}
                           </p>
                         </figcaption>
-                        {image.asset._ref && (
+                        {image?.asset?._ref ? (
                           <Image
                             src={urlForImage(image)?.url() as string}
                             alt={image.alt}
@@ -300,7 +300,7 @@ export default function TestBlock({ block }: any) {
                             placeholder="blur"
                             blurDataURL={image.fullAsset.metadata.lqip}
                           />
-                        )}
+                        ) : null}
                       </div>
                     </CarouselItem>
                   );
@@ -402,7 +402,7 @@ export default function TestBlock({ block }: any) {
                 <p className="text-lg text-white">{item.description}</p>
               </section>
               <section className="aspect-square md:w-1/2">
-                {image.asset._ref && (
+                {image?.asset?._ref ? (
                   <Image
                     className="h-full rounded-lg object-cover"
                     src={urlForImage(image)?.url() as string}
@@ -412,7 +412,7 @@ export default function TestBlock({ block }: any) {
                     placeholder="blur"
                     blurDataURL={image.fullAsset.metadata.lqip}
                   />
-                )}
+                ) : null}
               </section>
             </article>
           );

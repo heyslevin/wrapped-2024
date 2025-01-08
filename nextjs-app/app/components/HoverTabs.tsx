@@ -70,7 +70,7 @@ export default function HoverTabs({ tabs }: any) {
 
           return (
             <TabsContent key={tab._key} value={tab.industry}>
-              {imageAsset.asset._ref && (
+              {imageAsset?.asset?._ref ? (
                 <div className="flex md:hidden">
                   {isVisible && ( // Only render Image if visible
                     <Image
@@ -87,11 +87,11 @@ export default function HoverTabs({ tabs }: any) {
                     />
                   )}
                 </div>
-              )}
+              ) : null}
 
               {/* Desktop Image */}
               <div className="hidden md:flex">
-                {imageAsset.asset._ref && (
+                {imageAsset?.asset?._ref ? (
                   <Image
                     className="rounded-lg"
                     src={urlForImage(imageAsset)?.url() as string}
@@ -101,7 +101,7 @@ export default function HoverTabs({ tabs }: any) {
                     placeholder="blur"
                     blurDataURL={lqip || ""}
                   />
-                )}
+                ) : null}
               </div>
             </TabsContent>
           );

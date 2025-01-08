@@ -46,15 +46,17 @@ export function FadeCarousel({ items, options }: FadeCarouselProps) {
                     · {item.industry}
                   </p>
                 </div>
-                <Image
-                  className="object-cover"
-                  src={urlForImage(image)?.url() as string}
-                  alt={image.alt}
-                  width={2000}
-                  height={2000}
-                  placeholder="blur"
-                  blurDataURL={image.fullAsset.metadata.lqip}
-                />
+                {image?.asset?._ref ? (
+                  <Image
+                    className="object-cover"
+                    src={urlForImage(image)?.url() as string}
+                    alt={image.alt}
+                    width={2000}
+                    height={2000}
+                    placeholder="blur"
+                    blurDataURL={image.fullAsset.metadata.lqip}
+                  />
+                ) : null}
               </div>
             </CarouselItem>
           );

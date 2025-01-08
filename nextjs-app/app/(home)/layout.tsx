@@ -75,6 +75,7 @@ export default async function RootLayout({
 
   const navLinks = sanityFetch({ query: GET_NAV_LINKS });
 
+  console.log({ draftMode: isDraftMode });
   return (
     <html lang="en" className={`${graphik.variable} bg-white text-black`}>
       <body>
