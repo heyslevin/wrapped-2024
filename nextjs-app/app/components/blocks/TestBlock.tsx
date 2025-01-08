@@ -137,7 +137,7 @@ export default function TestBlock({ block }: any) {
 
             <section className="flex min-h-80 flex-col justify-between rounded-lg border border-white bg-none p-5 text-white motion-translate-y-in-25 motion-blur-in-md motion-opacity-in-0">
               <div className="relative w-full motion-translate-y-in-25 motion-blur-in-md motion-opacity-in-0 motion-delay-500">
-                {image.asset._ref && (
+                {image?.asset?._ref ? (
                   <Image
                     className="w-full"
                     src={urlForImage(image)?.url() as string}
@@ -145,7 +145,7 @@ export default function TestBlock({ block }: any) {
                     width={100}
                     height={50}
                   />
-                )}
+                ) : null}
               </div>
               <div className="motion-preset-slide-up-md text-balance text-2xl motion-blur-in-md motion-delay-1500 md:text-3xl">
                 12 years making things easy to understand, and impossible to
@@ -453,7 +453,7 @@ export default function TestBlock({ block }: any) {
                     return (
                       <div key={app._key} className="flex flex-col gap-2">
                         <div className="h-20 rounded-lg bg-white p-4 md:h-[100px]">
-                          {image.asset._ref && (
+                          {image?.asset?._ref ? (
                             <Image
                               className="h-full rounded-lg object-cover"
                               src={urlForImage(image)?.url() as string}
@@ -463,7 +463,7 @@ export default function TestBlock({ block }: any) {
                               placeholder="blur"
                               blurDataURL={image.fullAsset.metadata.lqip}
                             />
-                          )}
+                          ) : null}
                         </div>
                         <div className="">
                           <p className="-mb-1 text-sm font-medium">
@@ -521,7 +521,7 @@ export default function TestBlock({ block }: any) {
                       </p>
                       <figcaption className="absolute bottom-0 left-0 m-4 flex gap-2 md:m-8 md:gap-4">
                         <div className="aspect-square w-14 rounded-md bg-white p-2 md:w-24">
-                          {image.asset._ref && (
+                          {image?.asset?._ref ? (
                             <Image
                               className="rounded-md"
                               src={urlForImage(image)?.url() as string}
@@ -531,7 +531,7 @@ export default function TestBlock({ block }: any) {
                               placeholder="blur"
                               blurDataURL={image.fullAsset.metadata.lqip || ""}
                             />
-                          )}
+                          ) : null}
                         </div>
                         <div className="flex flex-col justify-center">
                           <p className="-mb-1 text-sm md:text-base">
@@ -575,7 +575,7 @@ export default function TestBlock({ block }: any) {
       <BlockContainer>
         <div className="flex w-full flex-col gap-4 border-t border-black pt-8">
           <figure className="w-full pb-14">
-            {image.asset._ref && (
+            {image?.asset?._ref ? (
               <Image
                 className="fill-black object-fill"
                 src={urlForImage(blackLogo)?.url() as string}
@@ -583,7 +583,7 @@ export default function TestBlock({ block }: any) {
                 height={1500}
                 alt={blackLogo.alt || ""}
               />
-            )}
+            ) : null}
           </figure>
           <section className="flex flex-col gap-12 md:flex-row md:justify-between md:gap-0">
             <div className="flex w-full flex-col gap-5 md:w-2/5">

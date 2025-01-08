@@ -66,7 +66,7 @@ export default function HoverTabs({ tabs }: any) {
       <section className="w-0 items-center md:static md:flex md:w-1/2">
         {tabs.map((tab: any) => {
           const imageAsset = tab.image;
-          const lqip = tab.image.fullAsset.metadata.lqip;
+          const lqip = tab?.image?.fullAsset?.metadata?.lqip;
 
           return (
             <TabsContent key={tab._key} value={tab.industry}>
