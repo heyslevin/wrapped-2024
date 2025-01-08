@@ -46,7 +46,7 @@ const singletonTypes = new Set(SINGLETONS)
 
 export default defineConfig({
   name: 'default',
-  title: 'Clean Next.js + Sanity',
+  title: 'Firmalt 2024 Wrapped',
 
   projectId,
   dataset,
@@ -58,6 +58,7 @@ export default defineConfig({
         origin: SANITY_STUDIO_PREVIEW_URL,
         previewMode: {
           enable: '/api/draft-mode/enable',
+          disable: '/api/draft-mode/disable',
         },
       },
       resolve: {

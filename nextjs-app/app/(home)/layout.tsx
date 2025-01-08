@@ -89,7 +89,6 @@ export default async function RootLayout({
           <LiveErrorBoundary>
             <SanityLive />
           </LiveErrorBoundary>
-          {/* <Header /> */}
           <ObserverProvider>{children}</ObserverProvider>
         </section>
         <SpeedInsights />
