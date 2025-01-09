@@ -251,7 +251,9 @@ export default function TestBlock({ block }: any) {
                     <CarouselItem key={project._key} className="basis-1/2">
                       <div className="aspect-square overflow-hidden rounded-lg">
                         <figcaption className="absolute bottom-0 mb-2 ml-2 flex flex-row rounded-full bg-white/30 p-2 px-3 text-black backdrop-blur-md">
-                          <p className="text-xs">{project.client}&nbsp;</p>
+                          <p className="whitespace-nowrap text-xs">
+                            {project.client}&nbsp;
+                          </p>
                           <p className="whitespace-nowrap text-xs text-stone-500">
                             · {project.industry}
                           </p>
@@ -286,7 +288,9 @@ export default function TestBlock({ block }: any) {
                     <CarouselItem key={project._key} className="basis-1/2">
                       <div className="aspect-square overflow-hidden rounded-lg">
                         <figcaption className="absolute bottom-0 mb-2 ml-2 flex flex-row rounded-full bg-white/30 p-2 px-3 text-black backdrop-blur-md">
-                          <p className="text-xs">{project.client}&nbsp;</p>
+                          <p className="whitespace-nowrap text-xs">
+                            {project.client}&nbsp;
+                          </p>
                           <p className="whitespace-nowrap text-xs text-stone-500">
                             · {project.industry}
                           </p>

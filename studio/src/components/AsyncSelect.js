@@ -23,7 +23,6 @@ const AsyncSelect = (props) => {
   const studioClient = useClient({apiVersion: '2024-08-01'})
 
   function formatSections(sections) {
-    console.log({formatting: sections})
     const formattedSections = sections.map((section) => ({
       title: section.heading
         ? `${_.startCase(section.type)} · ${formatString(section.heading)}`

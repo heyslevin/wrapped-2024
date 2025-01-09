@@ -50,6 +50,7 @@ export default function HoverTabs({ tabs }: any) {
               value={tab.industry}
               className="flex items-center border-b border-slate-300 py-1 md:py-3"
               onClick={() => handleClick(tab.industry)}
+              onMouseEnter={() => handleClick(tab.industry)}
             >
               <h3 className="text-xl group-data-[state=inactive]:text-stone-500 md:text-xl">
                 {tab.industry}
