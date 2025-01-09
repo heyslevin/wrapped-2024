@@ -349,12 +349,12 @@ export default function TestBlock({ block }: any) {
                 <CarouselNext className="relative right-auto top-auto transform-none" />
               </div>
             </div>
-            <CarouselContent className="ml-0 pl-4 md:-ml-4 md:pl-0">
+            <CarouselContent className="max-sm:ml-0 max-sm:pl-4">
               {metrics.map((metric: any) => {
                 return (
                   <CarouselItem
                     key={metric._key}
-                    className="ml-0 basis-[85%] pl-4 first-of-type:pl-0 last-of-type:pr-4 md:basis-1/4 md:first-of-type:pl-4 md:last-of-type:pr-0"
+                    className="ml-0 basis-[85%] pl-4 max-sm:first-of-type:pl-0 max-sm:last-of-type:pr-4 md:basis-1/4"
                   >
                     <article className="flex h-80 flex-col rounded-lg bg-stone-300 p-4 md:h-96">
                       <h4 className="mb-auto text-8xl font-medium tracking-tighter">
