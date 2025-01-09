@@ -339,7 +339,12 @@ export default function TestBlock({ block }: any) {
 
       <BlockContainer className="isolate px-0 md:px-10 md:py-10">
         <div className="w-full">
-          <Carousel className="w-full">
+          <Carousel
+            className="w-full"
+            opts={{
+              align: "start",
+            }}
+          >
             <div className="mb-8 flex w-full items-center justify-between px-4 md:px-0">
               <h2 className="text-2xl tracking-tight md:text-3xl">
                 Weird numbers
