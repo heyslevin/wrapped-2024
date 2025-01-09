@@ -76,8 +76,8 @@ export default function HoverTabs({ tabs }: any) {
                   {isVisible && ( // Only render Image if visible
                     <Image
                       src={urlForImage(imageAsset)?.url() as string}
-                      height={500}
-                      width={500}
+                      height={250}
+                      width={250}
                       alt={imageAsset.alt || ""}
                       placeholder="blur"
                       blurDataURL={lqip || ""}

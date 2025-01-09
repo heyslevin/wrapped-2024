@@ -34,7 +34,7 @@ export default function SectionContainer({
       >
         {title}
       </h2>
-      <div className="w-full md:w-1/3">
+      <div className="w-full md:w-2/3">
         <p className={cn("text-balance text-base md:text-lg")}>{paragraph}</p>
       </div>
     </BlockContainer>

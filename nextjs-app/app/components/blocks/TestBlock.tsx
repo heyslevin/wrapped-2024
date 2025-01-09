@@ -161,16 +161,18 @@ export default function TestBlock({ block }: any) {
       <BlockContainer className="px-5 py-24 md:px-0">
         <div className="w-full md:w-1/2 md:py-8">
           <h2 className="text-xl md:text-2xl">
-            We’ve been on the brink of change for several years, and this past
-            year was an acceleration towards the world ahead. What do we want it
-            to look like? We want to be active participants by advocating for a
-            world where form and function integrate to create value, success
-            aligns with social impact, and work enhances well-being. 2023 marked
-            our 20th year working with the world’s most influential
-            organizations. They’re actively changing how we work, live, and
-            interact. Together, we strive to co-create the world we want to live
-            in. We’re honored to serve their collective missions and humbled by
-            their continued trust.
+            This past year has been a whirlwind of change—fast-paced, dynamic,
+            and exhilarating. As creatives, we don’t just adapt to change; we
+            embrace it and help shape it. In an ever-evolving landscape, our
+            mission remains clear: to help brands rise above the noise, craft
+            stories that truly resonate, and equip them with the tools they need
+            to grow and transform.
+            <br></br>
+            <br></br>2024 marked our 12th year of building brands and sharing
+            their stories. We’re profoundly grateful for the opportunity to
+            collaborate with clients tackling ambitious challenges and for the
+            chance to do what we love: showing the world the transformative
+            power of great design.
           </h2>
         </div>
       </BlockContainer>
@@ -178,7 +180,7 @@ export default function TestBlock({ block }: any) {
       {/* Gallery */}
 
       <BlockContainer className="p-4">
-        <Carousel className="w-full">
+        <Carousel className="w-full" opts={{ loop: true }}>
           <CarouselContent className="">
             {gallery.map((item: any) => {
               const image = item.image;
@@ -186,7 +188,7 @@ export default function TestBlock({ block }: any) {
               return (
                 <CarouselItem key={item._key} className="">
                   {image?.asset?._ref ? (
-                    <div className="max-h-[800px] overflow-hidden rounded-lg">
+                    <div className="flex max-h-[800px] items-center overflow-hidden rounded-lg">
                       <Image
                         src={urlForImage(image)?.url() as string}
                         alt={image.alt}
@@ -211,7 +213,7 @@ export default function TestBlock({ block }: any) {
           id="stats"
           className="py-16 text-white md:py-28"
           title="The Stats"
-          paragraph="They’re actively changing how we work, live, and interact. Together, we strive to co-create the world we want to live in."
+          paragraph="Can we sum up and entire year in numbers? Maybe not, but we’re sure as hell going to try. Let’s talk numbers."
         />
 
         {/* Paragraph Block */}
@@ -225,10 +227,6 @@ export default function TestBlock({ block }: any) {
       </div>
 
       {/* Portfolio Block */}
-
-      {/* Todo:
-- Split gallery into 4 or 2 parts
-- Feed into the ui */}
 
       <BlockContainer className="md:px-10">
         <div className="flex w-full flex-col items-start justify-start gap-5 rounded-lg bg-white md:flex-row md:items-stretch md:p-4">
@@ -379,7 +377,7 @@ export default function TestBlock({ block }: any) {
         id="initiatives"
         className=""
         title="Initiatives"
-        paragraph="They’re actively changing how we work, live, and interact. Together, we strive to co-create the world we want to live in."
+        paragraph="Each year, we push beyond design work to explore new ideas—and 2024 was no exception. Here’s a look at our initiatives."
       />
 
       <BlockContainer className="flex-col gap-5 px-4 pb-24 md:px-10">
@@ -400,10 +398,12 @@ export default function TestBlock({ block }: any) {
                   COLOR_STYLES[item.color as ColorKey].normal,
                 )}
               >
-                <h3 className="mb-auto text-5xl font-bold uppercase tracking-tighter text-white md:text-7xl md:leading-[4rem]">
+                <h3 className="mb-auto text-4xl font-bold uppercase tracking-tighter text-white md:text-7xl md:leading-[4rem]">
                   {item.title}
                 </h3>
-                <p className="text-lg text-white">{item.description}</p>
+                <p className="whitespace-pre-wrap text-sm text-white md:text-lg">
+                  {item.description}
+                </p>
               </section>
               <section className="aspect-square md:w-1/2">
                 {image?.asset?._ref ? (
@@ -429,7 +429,7 @@ export default function TestBlock({ block }: any) {
         id="tools"
         className=""
         title="Tools"
-        paragraph="They’re actively changing how we work, live, and interact. Together, we strive to co-create the world we want to live in."
+        paragraph="What tools keep our wheels turning? Alongside our daily go-tos, we’re always on the hunt for new ways to design, collaborate, and communicate. Here’s our current tool stack:"
       />
 
       <BlockContainer className="px-4 md:px-10">
@@ -450,30 +450,30 @@ export default function TestBlock({ block }: any) {
                   </p>
                 </div>
                 {/* Right Side */}
-                <div className="grid w-full grid-cols-[repeat(auto-fit,80px)] justify-start gap-4 md:w-1/2 md:grid-cols-[repeat(auto-fit,100px)] md:justify-end">
+                <div className="grid w-full grid-cols-[repeat(auto-fit,80px)] justify-start gap-4 md:w-1/2 md:grid-cols-[repeat(auto-fit,80px)] md:justify-end">
                   {toolGroup.apps.map((app: any) => {
                     const image = app.icon;
 
                     return (
                       <div key={app._key} className="flex flex-col gap-2">
-                        <div className="h-20 rounded-lg bg-white p-4 md:h-[100px]">
+                        <div className="h-20 rounded-lg md:h-[80px]">
                           {image?.asset?._ref ? (
                             <Image
-                              className="h-full rounded-lg object-cover"
+                              className="h-full rounded-lg object-fill"
                               src={urlForImage(image)?.url() as string}
                               alt={image?.alt || ""}
-                              width={1000}
-                              height={1000}
+                              width={150}
+                              height={150}
                               placeholder="blur"
                               blurDataURL={image.fullAsset.metadata.lqip}
                             />
                           ) : null}
                         </div>
                         <div className="">
-                          <p className="-mb-1 text-sm font-medium">
+                          <p className="text-xs font-medium leading-tight">
                             {app.name}
                           </p>
-                          <p className="text-sm font-medium text-stone-400">
+                          <p className="text-xs font-medium text-stone-400">
                             {app.category}
                           </p>
                         </div>
@@ -488,7 +488,7 @@ export default function TestBlock({ block }: any) {
       </BlockContainer>
       <SectionContainer
         title="special thanks"
-        paragraph="They’re actively changing how we work, live, and interact. Together, we strive to co-create the world we want to live in. "
+        paragraph="None of our work would be possible without the incredible talent, collaboration, and kindness of our team and partners. A heartfelt thank you to everyone who helped bring our ideas to life."
       />
 
       {/* Special Thanks */}
@@ -524,13 +524,12 @@ export default function TestBlock({ block }: any) {
                         {testimonial.text}
                       </p>
                       <figcaption className="absolute bottom-0 left-0 m-4 flex gap-2 md:m-8 md:gap-4">
-                        <div className="aspect-square w-14 rounded-md bg-white p-2 md:w-24">
+                        <div className="relative aspect-square h-14 rounded-md bg-white p-2 md:h-24">
                           {image?.asset?._ref ? (
                             <Image
-                              className="rounded-md"
+                              className="w-full rounded-md object-contain p-2"
                               src={urlForImage(image)?.url() as string}
-                              width={300}
-                              height={300}
+                              fill
                               alt={image.alt || ""}
                               placeholder="blur"
                               blurDataURL={image.fullAsset.metadata.lqip || ""}
