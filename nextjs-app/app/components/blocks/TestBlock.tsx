@@ -339,12 +339,7 @@ export default function TestBlock({ block }: any) {
 
       <BlockContainer className="isolate px-0 md:px-10 md:py-10">
         <div className="w-full">
-          <Carousel
-            className="w-full"
-            opts={{
-              align: "start",
-            }}
-          >
+          <Carousel opts={{ align: "start" }} className="w-full">
             <div className="mb-8 flex w-full items-center justify-between px-4 md:px-0">
               <h2 className="text-2xl tracking-tight md:text-3xl">
                 Weird numbers
@@ -354,12 +349,12 @@ export default function TestBlock({ block }: any) {
                 <CarouselNext className="relative right-auto top-auto transform-none" />
               </div>
             </div>
-            <CarouselContent className="pl-4 md:pl-0">
+            <CarouselContent className="ml-0 pl-4 md:-ml-4 md:pl-0">
               {metrics.map((metric: any) => {
                 return (
                   <CarouselItem
                     key={metric._key}
-                    className="basis-[85%] last-of-type:pr-4 md:basis-1/4 md:last-of-type:pr-0"
+                    className="ml-0 basis-[85%] pl-4 first-of-type:pl-0 last-of-type:pr-4 md:basis-1/4 md:first-of-type:pl-4 md:last-of-type:pr-0"
                   >
                     <article className="flex h-80 flex-col rounded-lg bg-stone-300 p-4 md:h-96">
                       <h4 className="mb-auto text-8xl font-medium tracking-tighter">
