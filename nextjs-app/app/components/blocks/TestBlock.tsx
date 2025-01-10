@@ -394,11 +394,11 @@ export default function TestBlock({ block }: any) {
             >
               <section
                 className={cn(
-                  "flex aspect-square flex-col rounded-lg bg-gray-300 p-4 md:h-[700px] md:w-1/2",
+                  "flex flex-col justify-between rounded-lg bg-gray-300 p-4 md:h-[700px] md:w-1/2",
                   COLOR_STYLES[item.color as ColorKey].normal,
                 )}
               >
-                <h3 className="mb-auto text-4xl font-bold uppercase tracking-tighter text-white md:text-7xl md:leading-[4rem]">
+                <h3 className="mb-10 text-4xl font-bold uppercase tracking-tighter text-white md:text-7xl md:leading-[4rem]">
                   {item.title}
                 </h3>
                 <p className="whitespace-pre-wrap text-sm text-white md:text-lg">
@@ -450,13 +450,13 @@ export default function TestBlock({ block }: any) {
                   </p>
                 </div>
                 {/* Right Side */}
-                <div className="grid w-full grid-cols-[repeat(auto-fit,80px)] justify-start gap-4 md:w-1/2 md:grid-cols-[repeat(auto-fit,80px)] md:justify-end">
+                <div className="grid w-full grid-cols-[repeat(auto-fit,64px)] justify-start gap-6 md:w-1/2 md:grid-cols-[repeat(auto-fit,80px)] md:justify-end md:gap-4">
                   {toolGroup.apps.map((app: any) => {
                     const image = app.icon;
 
                     return (
                       <div key={app._key} className="flex flex-col gap-2">
-                        <div className="h-20 rounded-lg md:h-[80px]">
+                        <div className="h-16 rounded-lg md:h-[80px]">
                           {image?.asset?._ref ? (
                             <Image
                               className="h-full rounded-lg object-fill"
@@ -473,7 +473,7 @@ export default function TestBlock({ block }: any) {
                           <p className="text-xs font-medium leading-tight">
                             {app.name}
                           </p>
-                          <p className="text-xs font-medium text-stone-400">
+                          <p className="text-[.6rem] font-medium text-stone-400">
                             {app.category}
                           </p>
                         </div>
@@ -516,11 +516,11 @@ export default function TestBlock({ block }: any) {
                   <CarouselItem key={testimonial._key}>
                     <div
                       className={cn(
-                        "relative grid h-64 place-content-start rounded-lg bg-[#000000] p-6 pt-10 text-white md:h-[640px] md:place-content-center md:px-28",
+                        "relative grid aspect-square place-content-start rounded-lg bg-[#000000] p-6 pt-10 text-white md:h-[640px] md:place-content-center md:px-28",
                       )}
                       style={{ backgroundColor: color }}
                     >
-                      <p className="text-balance text-center text-xl md:text-5xl">
+                      <p className="text-balance text-center text-base md:text-5xl">
                         {testimonial.text}
                       </p>
                       <figcaption className="absolute bottom-0 left-0 m-4 flex gap-2 md:m-8 md:gap-4">
